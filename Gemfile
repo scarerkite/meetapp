@@ -22,14 +22,46 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+# gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 1.2'
+# gem 'jbuilder', '~> 1.2'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
+end
+
+gem 'active_model_serializers'
+
+gem 'carrierwave', '0.9.0'
+
+gem 'rmagick'
+
+gem 'ransack'
+
+gem 'haml-rails'
+
+gem 'devise' 
+
+gem 'cancan'
+
+gem 'html2haml'
+
+gem 'fog', '~> 1.3.1'
+
+gem 'will_paginate', '~> 3.0'
+
+group :development, :test do
+  gem 'pry-rails'
+  gem 'pry-byebug'
+  gem 'hirb'
+  gem 'sextant'
+  gem 'letter_opener'
+end
+
+group :production do
+  gem 'rails_12factor'
 end
 
 # Use ActiveModel has_secure_password

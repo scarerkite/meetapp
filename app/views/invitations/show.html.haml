@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Event:
+  = @invitation.event
+%p
+  %b User:
+  = @invitation.user
+%p
+  %b Accepted:
+  = @invitation.accepted
+
+= link_to 'Edit', edit_invitation_path(@invitation)
+\|
+= link_to 'Back', invitations_path
