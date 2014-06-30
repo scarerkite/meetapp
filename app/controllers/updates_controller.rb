@@ -3,7 +3,7 @@ class UpdatesController < ApplicationController
 
   # GET /updates
   def index
-    @updates = Update.all
+    @updates = @event.updates
   end
 
   # GET /updates/1
@@ -12,7 +12,8 @@ class UpdatesController < ApplicationController
 
   # GET /updates/new
   def new
-    @update = Update.new
+    # @event = Event.find(params[:event_id])
+    @update = Update.new(update_params)
   end
 
   # GET /updates/1/edit
@@ -21,10 +22,15 @@ class UpdatesController < ApplicationController
 
   # POST /updates
   def create
-    @update = Update.new(update_params)
+    @event = Event.find(params[:event_id])
+    @update = @event.updates.build(params[:update])
+    @update.user = current_user
+    @update.save
+
+   
 
     if @update.save
-      redirect_to @update, notice: 'Update was successfully created.'
+      redirect_to @event, notice: 'Update was successfully created.'
     else
       render action: 'new'
     end
@@ -51,8 +57,12 @@ class UpdatesController < ApplicationController
       @update = Update.find(params[:id])
     end
 
+    def set_event
+      @event = Event.find(params[:event_id])
+    end
+
     # Only allow a trusted parameter "white list" through.
     def update_params
-      params.require(:update).permit(:event_id, :user_id, :body)
+      params.require(:update).permit(:event_id, :user_id, :body, :event)
     end
 end

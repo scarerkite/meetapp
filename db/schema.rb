@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20140629151109) do
     t.string   "title"
     t.text     "description"
     t.text     "address"
-    t.text     "postcode"
+    t.string   "postcode"
     t.string   "date"
     t.integer  "user_id"
     t.datetime "created_at"

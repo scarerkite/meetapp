@@ -7,15 +7,22 @@
   %b Description:
   = @event.description
 %p
-  %b Address:
-  = @event.address
-%p
   %b Date:
   = @event.date
 %p
-  %b User:
-  = @event.user
+  %b Address:
+  = @event.address
+%p
+  %b Postcode:
+  = @event.postcode
+
+%h2 Updates
+- @event.updates.each do |update|
+  %p= update.body
+
 
 = link_to 'Edit', edit_event_path(@event)
+\|
+= link_to 'Post update', new_event_update_path(@event)
 \|
 = link_to 'Back', events_path

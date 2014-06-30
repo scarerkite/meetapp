@@ -22,6 +22,7 @@ class EventsController < ApplicationController
   # POST /events
   def create
     @event = Event.new(event_params)
+    @event.user = current_user
 
     if @event.save
       redirect_to @event, notice: 'Event was successfully created.'
@@ -53,6 +54,6 @@ class EventsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def event_params
-      params.require(:event).permit(:title, :description, :address, :date, :user_id)
+      params.require(:event).permit(:title, :description, :address, :date, :postcode, :user_id, :update)
     end
 end

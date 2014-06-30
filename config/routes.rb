@@ -1,10 +1,13 @@
 Meetapp::Application.routes.draw do
 
-  resources :updates
+  
 
   resources :invitations
 
-  resources :events
+  resources :events do 
+    resources :updates
+  end
+
 
   devise_for :users
   root 'events#index'

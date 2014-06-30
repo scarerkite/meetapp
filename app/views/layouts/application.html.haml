@@ -18,5 +18,5 @@
         \|
         = link_to 'Login', new_user_session_path
     - flash.each do |name, msg|
-          = content_tag :div, msg, :id => "flash_#{name}"
+      = content_tag :div, msg, :id => "flash_#{name}"
     = yield
