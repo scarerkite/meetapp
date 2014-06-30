@@ -32,6 +32,8 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+
+
 gem 'active_model_serializers'
 
 gem 'carrierwave', '0.9.0'
@@ -58,10 +60,19 @@ group :development, :test do
   gem 'hirb'
   gem 'sextant'
   gem 'letter_opener'
+  gem 'factory_girl_rails'
+  gem 'faker'
 end
 
 group :production do
   gem 'rails_12factor'
+end
+
+group :test do
+  gem 'rspec-rails', '~> 2.14.2'
+  gem 'shoulda-matchers'
+  gem 'database_cleaner'
+  gem 'capybara'
 end
 
 # Use ActiveModel has_secure_password

@@ -53,6 +53,6 @@ class InvitationsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def invitation_params
-      params.require(:invitation).permit(:event_id, :user, :accepted)
+      params.require(:invitation).permit(:user, :accepted)
     end
 end

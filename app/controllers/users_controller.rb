@@ -12,7 +12,7 @@ class UsersController < Devise::RegistrationsController
 
   # GET /user/new
   def new
-    @update = User.new
+    @user = User.new
   end
 
   # GET /user/1/edit
@@ -21,19 +21,19 @@ class UsersController < Devise::RegistrationsController
 
   # POST /user
   def create
-    @update = User.new(update_params)
+    @user = User.new(user_params)
 
-    if @update.save
-      redirect_to @update, notice: 'User was successfully created.'
+    if @user.save
+      redirect_to @user, notice: 'User was successfully created.'
     else
       render action: 'new'
     end
   end
 
   # PATCH/PUT /user/1
-  def update
-    if @update.update(update_params)
-      redirect_to @update, notice: 'User was successfully updated.'
+  def user
+    if @user.user(user_params)
+      redirect_to @user, notice: 'User was successfully userd.'
     else
       render action: 'edit'
     end
@@ -41,18 +41,18 @@ class UsersController < Devise::RegistrationsController
 
   # DELETE /user/1
   def destroy
-    @update.destroy
+    @user.destroy
     redirect_to user_url, notice: 'User was successfully destroyed.'
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_update
-      @update = User.find(params[:id])
+    def set_user
+      @user = User.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
-    def update_params
-      params.require(:update).permit(:event_id, :user_id, :body)
+    def user_params
+      params.require(:user).permit(:name, :username, :bio, :avatar, :email, :role, :password, :password_confirmation)
     end
 end

@@ -1,11 +1,9 @@
 Meetapp::Application.routes.draw do
 
-  
-
   resources :invitations
 
   resources :events do 
-    resources :updates
+    resources :comments
   end
 
 

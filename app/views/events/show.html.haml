@@ -17,8 +17,15 @@
   = @event.postcode
 
 %h2 Updates
-- @event.updates.each do |update|
-  %p= update.body
+= form_for [@event, @event.comments.build] do |f|
+  %p= f.text_area :body, :size => '40x10'
+  %p= f.submit "Post update"
+
+
+- @event.comments.each do |comment|
+  %p
+    %b= comment.user.username
+    = comment.body
 
 
 = link_to 'Edit', edit_event_path(@event)

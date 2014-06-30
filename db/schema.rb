@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140629151109) do
+ActiveRecord::Schema.define(version: 20140630132441) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: true do |t|
+    t.integer  "event_id"
+    t.integer  "user_id"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["event_id"], name: "index_comments_on_event_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "events", force: true do |t|
     t.string   "title"
@@ -40,20 +51,10 @@ ActiveRecord::Schema.define(version: 20140629151109) do
   add_index "invitations", ["event_id"], name: "index_invitations_on_event_id", using: :btree
   add_index "invitations", ["user_id"], name: "index_invitations_on_user_id", using: :btree
 
-  create_table "updates", force: true do |t|
-    t.integer  "event_id"
-    t.integer  "user_id"
-    t.text     "body"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "updates", ["event_id"], name: "index_updates_on_event_id", using: :btree
-  add_index "updates", ["user_id"], name: "index_updates_on_user_id", using: :btree
-
   create_table "users", force: true do |t|
     t.string   "name"
     t.string   "username"
+    t.string   "role"
     t.text     "bio"
     t.text     "avatar"
     t.string   "email",                  default: "", null: false
