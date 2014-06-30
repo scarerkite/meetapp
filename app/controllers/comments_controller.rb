@@ -21,16 +21,15 @@ class CommentsController < ApplicationController
 
   # POST /comments
   def create
-    @comment = Comment.new(comment_params)
-
+    
     @event = Event.find(params[:event_id])
-    @comment = @event.comments.build(params[:comment])
+    @comment = @event.comments.build comment_params
     @comment.user = current_user
     @comment.save
-    redirect_to @event
+
 
     if @comment.save
-      redirect_to @comment, notice: 'Comment was successfully created.'
+      redirect_to @event, notice: 'Comment was successfully created.'
     else
       render action: 'new'
     end
