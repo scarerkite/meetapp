@@ -1,4 +1,6 @@
 %p#notice= notice
+- destination = [@event.address, @event.postcode].join(", ")
+= destination
 
 %p
   %b Title:
@@ -15,6 +17,8 @@
 %p
   %b Postcode:
   = @event.postcode
+
+#map_canvas
 
 %h2 Updates
 = form_for [@event, Comment.new] do |f|
