@@ -50,6 +50,8 @@ gem 'cancan'
 
 gem 'html2haml'
 
+gem 'geocoder'
+
 gem 'fog', '~> 1.3.1'
 
 gem 'will_paginate', '~> 3.0'

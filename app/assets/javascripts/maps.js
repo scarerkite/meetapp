@@ -15,16 +15,16 @@ function addMarker(map) {
    var showMarkerFromGeocoderResults = function(results, status) {
      if (status == google.maps.GeocoderStatus.OK) {
        var marker = new google.maps.Marker({
-           position: results[0].geometry.location,
+           position: address,
            map: map,
        });
-       map.setCenter(results[0].geometry.location);
+       map.setCenter(address);
      } else {
        console.warn("Couldn't geocode address.");
      }
    }
 
-   $('destination').each(function(i, el) {
+   $('address').each(function(i, el) {
      var geocoderOptions = { address: $(el).text() };
      geocoder.geocode(geocoderOptions, showMarkerFromGeocoderResults);
    });

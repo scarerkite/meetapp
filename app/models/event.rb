@@ -3,4 +3,15 @@ class Event < ActiveRecord::Base
   has_many :comments
   has_many :invitations
   # has_many :users, through: :invitations
+  include EventsHelper
+
+  after_create :set_lat_lng
+
+  def set_lat_lng
+    full_address = [self.address, self.postcode].join(", ")
+    self.latitude = get_coords(full_address)["lat"]
+    self.longitude = get_coords(full_address)["lng"]
+    self.save
+  end
+
 end
