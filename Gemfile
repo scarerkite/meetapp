@@ -36,7 +36,7 @@ end
 
 gem 'active_model_serializers'
 
-gem 'carrierwave', '0.9.0'
+gem 'carrierwave'
 
 gem 'rmagick'
 
@@ -55,6 +55,12 @@ gem 'geocoder'
 gem 'fog', '~> 1.3.1'
 
 gem 'will_paginate', '~> 3.0'
+
+gem 'omniauth-google-oauth2'
+
+gem 'gravatarify', '~> 3.0.0'
+
+gem 'omniauth-facebook'
 
 group :development, :test do
   gem 'pry-rails'

@@ -5,6 +5,11 @@ class Event < ActiveRecord::Base
   # has_many :users, through: :invitations
   include EventsHelper
 
+  validates :title, presence: true
+  validates :address, presence: true
+  validates :postcode, presence: true
+  validates :description, length: { :maximum => 250 }, allow_blank: true
+
   after_create :set_lat_lng
 
   def set_lat_lng
