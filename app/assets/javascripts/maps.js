@@ -7,18 +7,22 @@ function initialize() {
    };
    var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
    addMarker(map);
+   var marker;
  };
 
 function addMarker(map) {
    console.log("Showing marker from geocoder results.");
    var geocoder = new google.maps.Geocoder();
+   var latitude = $('#lat').data('latitude');
+   var longitude = $('#lng').data('longitude');
+   var addressLatLng = google.maps.LatLng(latitude, longitude)
    var showMarkerFromGeocoderResults = function(results, status) {
      if (status == google.maps.GeocoderStatus.OK) {
-       var marker = new google.maps.Marker({
+       marker = new google.maps.Marker({
            position: address,
            map: map,
        });
-       map.setCenter(address);
+       map.setCenter(addressLatLng);
      } else {
        console.warn("Couldn't geocode address.");
      }

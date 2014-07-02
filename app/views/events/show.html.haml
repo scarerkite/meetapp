@@ -1,6 +1,8 @@
 %p#notice= notice
 - address = [@event.address, @event.postcode].join(", ")
 = address
+- content_tag "div", id: "lat", data: {latitude: @event.latitude}
+- content_tag "div", id: "lng", data: {longitude: @event.longitude}
 
 %p
   %b Title:
