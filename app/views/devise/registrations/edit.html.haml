@@ -23,6 +23,10 @@
     %br/
     = f.file_field :image
   %div
+    = f.label :remote_image_url, 'or add by URL'
+    %br/
+    = f.url_field :remote_image_url
+  %div
     = f.label :email
     %br/
     = f.email_field :email

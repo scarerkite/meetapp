@@ -7,7 +7,8 @@ Meetapp::Application.routes.draw do
   end
 
 
-  devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks" }
+  devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks", registrations: 'registrations' }
+
 
   devise_scope :user do
     root 'devise/sessions#new'

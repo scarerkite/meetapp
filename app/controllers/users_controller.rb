@@ -31,9 +31,9 @@ class UsersController < Devise::RegistrationsController
   end
 
   # PATCH/PUT /user/1
-  def user
-    if @user.user(user_params)
-      redirect_to @user, notice: 'User was successfully userd.'
+  def update
+    if @user.update(user_params)
+      redirect_to @user, notice: 'User was successfully updated.'
     else
       render action: 'edit'
     end
