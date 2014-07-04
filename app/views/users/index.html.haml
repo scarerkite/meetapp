@@ -1,0 +1,8 @@
+
+
+
+- @users.each do |user|
+  %h2 
+    = link_to user.name, "/users/#{user.id}"
+  = link_to "/users/#{user.id}" do
+    = image_tag user.image.profile.url, :class => "userimage"

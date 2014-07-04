@@ -3,7 +3,7 @@ class UsersController < Devise::RegistrationsController
 
   # GET /user
   def index
-    @user = User.all
+    @users = User.all
   end
 
   # GET /user/1
