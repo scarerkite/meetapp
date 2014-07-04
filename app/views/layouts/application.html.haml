@@ -11,7 +11,7 @@
       .user-nav
         - if user_signed_in?
           - if current_user.image? && current_user.name?
-            = image_tag current_user.image, class: "small-avatar"
+            = image_tag current_user.image.thumb.url, class: "small-avatar"
             %b= current_user.name
           - else
             Logged in as

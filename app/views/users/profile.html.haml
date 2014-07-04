@@ -2,7 +2,7 @@
   = current_user.name
 
 %p
-  = image_tag current_user.image, :class => "userimage"
+  = image_tag current_user.image.profile.url, :class => "userimage"
 
 %h4
   = current_user.bio
