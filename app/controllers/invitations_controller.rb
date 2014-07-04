@@ -21,7 +21,9 @@ class InvitationsController < ApplicationController
 
   # POST /invitations
   def create
-    @invitation = Invitation.new(invitation_params)
+    @event = Event.find(params[:event_id])
+    @invitation = @event.invitations.build invitation_params
+    @invitation.host_id = current_user
 
     if @invitation.save
       redirect_to @invitation, notice: 'Invitation was successfully created.'
@@ -53,6 +55,6 @@ class InvitationsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def invitation_params
-      params.require(:invitation).permit(:user, :accepted)
+      params.require(:invitation).permit(:invitee)
     end
 end

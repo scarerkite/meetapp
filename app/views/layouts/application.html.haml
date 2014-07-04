@@ -7,26 +7,27 @@
     = csrf_meta_tags
     %script{src: "https://maps.googleapis.com/maps/api/js?key=AIzaSyANe0qzGPRqHCMJId1DFBDl2JJ1v0X4APk&sensor=false", type: "text/javascript"}
   %body
-    .user-nav
-      - if user_signed_in?
-        - if current_user.image? && current_user.name?
-          = image_tag current_user.image, class: "small-avatar"
-          %b= current_user.name
+    .container
+      .user-nav
+        - if user_signed_in?
+          - if current_user.image? && current_user.name?
+            = image_tag current_user.image, class: "small-avatar"
+            %b= current_user.name
+          - else
+            Logged in as
+            %b= current_user.name
+          \|
+          = link_to 'Edit Profile', edit_user_registration_path
+          \|
+          = link_to 'Logout', destroy_user_session_path, method: :delete
         - else
-          Logged in as
-          %b= current_user.name
-        \|
-        = link_to 'Edit Profile', edit_user_registration_path
-        \|
-        = link_to 'Logout', destroy_user_session_path, method: :delete
-      - else
-        = link_to 'Sign up', new_user_registration_path
-        \|
-        = link_to "Sign up with Google", user_omniauth_authorize_path(:google_oauth2)
-        \|
-        = link_to "Sign up with Facebook", user_omniauth_authorize_path(:facebook)
-        \|
-        = link_to 'Login', new_user_session_path
-    - flash.each do |name, msg|
-      = content_tag :div, msg, :id => "flash_#{name}"
-    = yield
+          = link_to 'Sign up', new_user_registration_path
+          \|
+          = link_to "Sign up with Google", user_omniauth_authorize_path(:google_oauth2)
+          \|
+          = link_to "Sign up with Facebook", user_omniauth_authorize_path(:facebook)
+          \|
+          = link_to 'Login', new_user_session_path
+      - flash.each do |name, msg|
+        = content_tag :div, msg, :id => "flash_#{name}"
+      = yield

@@ -43,25 +43,23 @@ ActiveRecord::Schema.define(version: 20140702105231) do
     t.text     "address"
     t.string   "postcode"
     t.string   "date"
-    t.integer  "user_id"
+    t.integer  "host_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.float    "latitude"
     t.float    "longitude"
   end
 
-  add_index "events", ["user_id"], name: "index_events_on_user_id", using: :btree
-
   create_table "invitations", force: true do |t|
     t.integer  "event_id"
-    t.integer  "user_id"
+    t.integer  "host_id"
+    t.integer  "invitee_id"
     t.boolean  "accepted"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "invitations", ["event_id"], name: "index_invitations_on_event_id", using: :btree
-  add_index "invitations", ["user_id"], name: "index_invitations_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "name"

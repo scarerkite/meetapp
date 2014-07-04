@@ -1,9 +1,9 @@
 Meetapp::Application.routes.draw do
 
-  resources :invitations
 
   resources :events do 
     resources :comments
+    resources :invitations
   end
 
 
@@ -11,6 +11,8 @@ Meetapp::Application.routes.draw do
 
 
   devise_scope :user do
+    match 'users/:id' => 'users#show', via: :get
+    match 'profile' => 'users#profile', via: :get
     root 'devise/sessions#new'
   end
 

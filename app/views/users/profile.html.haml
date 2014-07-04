@@ -1,0 +1,10 @@
+%h1 
+  = current_user.name
+
+%p
+  = image_tag current_user.image, :class => "userimage"
+
+%h4
+  = current_user.bio
+
+= link_to 'Edit profile', edit_user_registration_path

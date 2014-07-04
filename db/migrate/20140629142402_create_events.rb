@@ -6,7 +6,7 @@ class CreateEvents < ActiveRecord::Migration
       t.text :address
       t.string :postcode
       t.string :date
-      t.references :user, index: true
+      t.integer :host_id
 
       t.timestamps
     end

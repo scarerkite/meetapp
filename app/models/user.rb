@@ -4,10 +4,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :omniauthable, :omniauth_providers => [:google_oauth2, :facebook]
 
-  has_many :events
   has_many :comments
-  has_many :invitations
-  # has_many :events, through: :invitations
+  has_many :invitations, foreign_key: "host_id"
+  has_many :events, through: :invitations
 
   validates :name, presence: true
   validates :username, uniqueness: true
