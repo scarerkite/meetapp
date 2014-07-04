@@ -66,6 +66,8 @@ gem 'bootstrap-sass', '~> 3.2.0'
 
 gem 'autoprefixer-rails'
 
+gem 'acts_as_friendable', github: "rhannequin/acts_as_friendable"
+
 group :development, :test do
   gem 'pry-rails'
   gem 'pry-byebug'

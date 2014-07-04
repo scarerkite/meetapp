@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   has_many :invitations, foreign_key: "host_id"
   has_many :events, through: :invitations
 
+  has_many :hosted_events , class_name: "Event", foreign_key: "host_id"
+
   validates :name, presence: true
   validates :username, uniqueness: true
   validates :bio, length: { :maximum => 250 }, allow_blank: true

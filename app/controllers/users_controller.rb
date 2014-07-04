@@ -1,5 +1,5 @@
 class UsersController < Devise::RegistrationsController
-  before_action :set_update, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /user
   def index
