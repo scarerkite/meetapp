@@ -21,6 +21,11 @@
 
 #map_canvas
 
+%h2 People invited
+- @event.invitations.each do |invitation|
+  %p
+    = invitation.invitee.name
+
 %h2 Updates
 = form_for [@event, Comment.new] do |f|
   %p= f.text_area :body, :size => '40x10'
@@ -31,6 +36,8 @@
   %p
     %b= comment.user.username
     = comment.body
+
+
 
 
 = link_to 'Edit', edit_event_path(@event)

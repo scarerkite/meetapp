@@ -54,7 +54,7 @@
         %i (we need your current password to confirm your changes)
         %br/
         = f.password_field :current_password, autocomplete: "off", class: "form-control", placeholder: "Current password"
-    %div= f.submit "Update", type: "button", class: "btn btn-primary"
+    %div= f.submit "Update", class: "btn btn-primary"
 
   %p
     = link_to "Link this account with your Google account", user_omniauth_authorize_path(:google_oauth2)
