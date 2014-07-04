@@ -1,41 +1,41 @@
 %p#notice= notice
-= [@event.address, @event.postcode].join(", ")
+
 = content_tag "div", nil, id: "lat", data: {latitude: @event.latitude}
 = content_tag "div", nil, id: "lng", data: {longitude: @event.longitude}
 
-%p
-  %b Title:
-  = @event.title
-%p
-  %b Description:
-  = @event.description
-%p
-  %b Date:
-  = @event.date
-%p
-  %b Address:
-  = @event.address
-%p
-  %b Postcode:
-  = @event.postcode
+.col-md-6
+  #map_canvas
 
-#map_canvas
+  %h2 Who?
+  - @event.invitations.each do |invitation|
+    %p
+      = invitation.invitee.name
 
-%h2 People invited
-- @event.invitations.each do |invitation|
+  %h2 Updates
+  = form_for [@event, Comment.new] do |f|
+    %p= f.text_area :body, :size => '40x10'
+    %p= f.submit "Post update"
+
+
+  - @event.comments.each do |comment|
+    %p
+      %b= comment.user.username
+      = comment.body
+
+.col-md-6
   %p
-    = invitation.invitee.name
-
-%h2 Updates
-= form_for [@event, Comment.new] do |f|
-  %p= f.text_area :body, :size => '40x10'
-  %p= f.submit "Post update"
-
-
-- @event.comments.each do |comment|
+    %h2
+      = @event.title
   %p
-    %b= comment.user.username
-    = comment.body
+    %h3
+      = @event.description
+  %p
+    %h4 
+      = @event.date
+  %p
+    %h4
+      = [@event.address, @event.postcode].join(", ")
+
 
 
 
