@@ -3,47 +3,49 @@
 = content_tag "div", nil, id: "lat", data: {latitude: @event.latitude}
 = content_tag "div", nil, id: "lng", data: {longitude: @event.longitude}
 
-.col-md-6
-  #map_canvas
+.col-md-12
+  %h2
+    = @event.title
+  .col-md-6
+    #map_canvas
 
-  %h2 Who?
-  - @event.invitations.each do |invitation|
-    %p
-      = invitation.invitee.name
+    = link_to 'Edit', edit_event_path(@event)
+    \|
+    = link_to 'Send invitations', new_event_invitation_path(@event)
+    \|
+    = link_to 'Back', events_path
 
-  %h2 Updates
-  = form_for [@event, Comment.new] do |f|
-    %p= f.text_area :body, :size => '40x10'
-    %p= f.submit "Post update"
+    %h2 Updates
+    - @event.comments.each do |comment|
+      %p
+        %b= comment.user.username
+        = comment.body
 
+    
+    .form-group
+      = form_for [@event, Comment.new] do |f|
+        %p= f.text_area :body
+        %p= f.submit "Post update"
 
-  - @event.comments.each do |comment|
-    %p
-      %b= comment.user.username
-      = comment.body
-
-.col-md-6
-  %p
-    %h2
-      = @event.title
-  %p
+  .col-md-6
+    
     %h3
       = @event.description
-  %p
+
     %h4 
       = @event.date
-  %p
-    %h4
-      = [@event.address, @event.postcode].join(", ")
+    %p
+      %h4
+        = [@event.address, @event.postcode].join(", ")
+
+    %h3 Who?
+    - @event.invitations.each do |invitation|
+      %p
+        / = invitation.invitee.image.profile.url, class: "small-avatar"
+        = invitation.invitee.name
 
 
 
 
 
-= link_to 'Edit', edit_event_path(@event)
-\|
-= link_to 'Post update', new_event_comment_path(@event)
-\|
-= link_to 'Send invitations', new_event_invitation_path(@event)
-\|
-= link_to 'Back', events_path
+
