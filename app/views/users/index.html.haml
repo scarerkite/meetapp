@@ -2,7 +2,9 @@
 
 
 - @users.each do |user|
-  %h2 
-    = link_to user.name, "/users/#{user.id}"
-  = link_to "/users/#{user.id}" do
-    = image_tag user.image.profile.url, :class => "userimage"
+  - unless user == current_user
+    %h2 
+      = link_to user.name, "/users/#{user.id}"
+    = link_to "/users/#{user.id}" do
+      = image_tag user.image.profile.url, :class => "userimage"
+    = link_to "Add friend", friendships_path(friend_id: user), method: :post

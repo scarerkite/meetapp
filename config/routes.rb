@@ -7,10 +7,12 @@ Meetapp::Application.routes.draw do
   end
 
 
+
   devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks", registrations: 'registrations' }
 
 
   devise_scope :user do
+    resources :friendships
     match 'users/:id' => 'users#show', via: :get
     match 'profile' => 'users#profile', via: :get
     match 'users' => 'users#index', via: :get
