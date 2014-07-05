@@ -9,10 +9,11 @@ class User < ActiveRecord::Base
   has_many :friends, :through => :friendships
 
   has_many :comments
-  has_many :invitations, foreign_key: "host_id"
+  has_many :invitations, foreign_key: "invitee_id"
   has_many :events, through: :invitations
 
-  has_many :hosted_events , class_name: "Event", foreign_key: "host_id"
+  has_many :hosted_events, class_name: "Event", foreign_key: "host_id"
+
 
   validates :name, presence: true
   validates :username, uniqueness: true
