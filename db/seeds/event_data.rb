@@ -1,101 +1,6 @@
-[
-  User,
-  Event,
-  Comment,
-  Invitation,
-  Friendship
-].each(&:delete_all)
+# Events
 
-
-alice = User.new(
-  name: "Alice Anderson" ,
-  username: "alice",
-  role: "admin",
-  bio: "Live in London, enjoy going out.",
-  email: "alice@alice.com",
-  password: "password"
-)
-
-bob = User.new(
-  name: "Bob Byron",
-  username: "bob",
-  role: "admin",
-  bio: "Live in London, enjoy going out.",
-  email: "bob@bob.com",
-  password: "password"
-)
-
-charlotte = User.new(
-  name: "Charlotte Clarke",
-  username: "charlotte",
-  role: "user",
-  bio: "Live in London, enjoy going out.",
-  email: "charlotte@charlotte.com",
-  password: "password"
-)
-
-dan = User.new(
-  name: "Dan Davids",
-  username: "dan",
-  role: "user",
-  bio: "Live in London, enjoy going out.",
-  email: "dan@dan.com",
-  password: "password"
-)
-
-ed = User.new(
-  name: "Ed Erlandson",
-  username: "ed",
-  role: "user",
-  bio: "Live in London, enjoy going out.",
-  email: "ed@ed.com",
-  password: "password"
-)
-
-fran = User.new(
-  name: "Fran Frank",
-  username: "fran",
-  role: "user",
-  bio: "Live in London, enjoy going out.",
-  email: "fran@fran.com",
-  password: "password"
-)
-
-gary = User.new(
-  name: "Gary Greaves",
-  username: "gary",
-  role: "user",
-  bio: "Live in London, enjoy going out.",
-  email: "gary@gary.com",
-  password: "password"
-)
-
-hilda = User.new(
-  name: "Hilda Hodge",
-  username: "hilda",
-  role: "user",
-  bio: "Live in London, enjoy going out.",
-  email: "hilda@hilda.com",
-  password: "password"
-)
-
-ida = User.new(
-  name: "Ida Ilks",
-  username: "ida",
-  bio: "Live in London, enjoy going out.",
-  email: "ida@ida.com",
-  password: "password"
-)
-
-jack = User.new(
-  name: "Jack Jones",
-  username: "jack",
-  bio: "Live in London, enjoy going out.",
-  email: "jack@jack.com",
-  password: "password"
-)
-
-[alice, bob, charlotte, dan, ed, fran, gary, hilda, ida, jack].each(&:skip_confirmation!).each(&:save!)
+Event.delete_all
 
 Event.create!(
   title: "Bye Bye Jack",
@@ -103,6 +8,7 @@ Event.create!(
   address: "The Crown Tavern, 43 Clerkenwell Green",
   postcode: "EC1R 0EG",
   date: "21-08-2014",
+  time: "2000-01-01 21:00:00 UTC",
   host_id: 1
 )
 
@@ -112,6 +18,7 @@ Event.create!(
   address: "90 Walton St, Oxford",
   postcode: "OX2 6EB",
   date: "14-10-2014",
+  time: "2000-01-01 20:00:00 UTC",
   host_id: 5
 )
 
@@ -121,6 +28,7 @@ Event.create!(
   address: "The Clerk And Well, 156 Clerkenwell Rd, London",
   postcode: "EC1R 5DU",
   date: "21-07-2014",
+  time: "2000-01-01 19:00:00 UTC",
   host_id: 5
 )
 
@@ -130,6 +38,7 @@ Event.create!(
   address: "The Fishes, North Hinksey Village, Oxford",
   postcode: "OX2 0NA",
   date: "24-07-2014",
+  time: "2000-01-01 19:00:00 UTC",
   host_id: 4
 )
 
@@ -139,7 +48,18 @@ Event.create!(
   address: "9 Back Hill",
   postcode: "EC1R 5EN",
   date: "15-07-2014",
+  time: "2000-01-01 18:00:00 UTC",
   host_id: 1
+)
+
+Event.create!(
+  title: "Bye Bye Charlotte",
+  description: "Charlotte's going away party",
+  address: "13 Eyre Street Hill",
+  postcode: "EC1R 5ET",
+  date: "24-08-2014",
+  time: "2000-01-01 19:00:00 UTC",
+  host_id: 7
 )
 
 Event.create!(
@@ -148,6 +68,7 @@ Event.create!(
   address: "The Crown Tavern, 43 Clerkenwell Green",
   postcode: "EC1R 0EG",
   date: "21-08-2014",
+  time: "2000-01-01 19:00:00 UTC",
   host_id: 1
 )
 
@@ -157,6 +78,7 @@ Event.create!(
   address: "90 Walton St, Oxford",
   postcode: "OX2 6EB",
   date: "14-10-2014",
+  time: "2000-01-01 18:30:00 UTC",
   host_id: 5
 )
 
@@ -166,6 +88,7 @@ Event.create!(
   address: "The Clerk And Well, 156 Clerkenwell Rd, London",
   postcode: "EC1R 5DU",
   date: "21-07-2014",
+  time: "2000-01-01 19:00:00 UTC",
   host_id: 2
 )
 
@@ -175,6 +98,7 @@ Event.create!(
   address: "The Fishes, North Hinksey Village, Oxford",
   postcode: "OX2 0NA",
   date: "24-07-2014",
+  time: "2000-01-01 18:00:00 UTC",
   host_id: 3
 )
 
@@ -184,6 +108,7 @@ Event.create!(
   address: "9 Back Hill",
   postcode: "EC1R 5EN",
   date: "15-07-2014",
+  time: "2000-01-01 18:00:00 UTC",
   host_id: 1
 )
 
@@ -193,6 +118,7 @@ Event.create!(
   address: "The Crown Tavern, 43 Clerkenwell Green",
   postcode: "EC1R 0EG",
   date: "21-08-2014",
+  time: "2000-01-01 18:00:00 UTC",
   host_id: 1
 )
 
@@ -202,6 +128,7 @@ Event.create!(
   address: "90 Walton St, Oxford",
   postcode: "OX2 6EB",
   date: "14-10-2014",
+  time: "2000-01-01 19:00:00 UTC",
   host_id: 5
 )
 
@@ -211,6 +138,7 @@ Event.create!(
   address: "The Clerk And Well, 156 Clerkenwell Rd, London",
   postcode: "EC1R 5DU",
   date: "21-07-2014",
+  time: "2000-01-01 19:00:00 UTC",
   host_id: 5
 )
 
@@ -220,6 +148,7 @@ Event.create!(
   address: "The Fishes, North Hinksey Village, Oxford",
   postcode: "OX2 0NA",
   date: "24-07-2014",
+  time: "2000-01-01 19:00:00 UTC",
   host_id: 4
 )
 
@@ -229,6 +158,7 @@ Event.create!(
   address: "9 Back Hill",
   postcode: "EC1R 5EN",
   date: "15-07-2014",
+  time: "2000-01-01 19:00:00 UTC",
   host_id: 1
 )
 
@@ -238,6 +168,7 @@ Event.create!(
   address: "The Crown Tavern, 43 Clerkenwell Green",
   postcode: "EC1R 0EG",
   date: "21-08-2014",
+  time: "2000-01-01 19:00:00 UTC",
   host_id: 1
 )
 
@@ -247,6 +178,7 @@ Event.create!(
   address: "90 Walton St, Oxford",
   postcode: "OX2 6EB",
   date: "14-10-2014",
+  time: "2000-01-01 19:00:00 UTC",
   host_id: 5
 )
 
@@ -256,6 +188,7 @@ Event.create!(
   address: "The Clerk And Well, 156 Clerkenwell Rd, London",
   postcode: "EC1R 5DU",
   date: "21-07-2014",
+  time: "2000-01-01 19:00:00 UTC",
   host_id: 6
 )
 
@@ -265,6 +198,7 @@ Event.create!(
   address: "The Fishes, North Hinksey Village, Oxford",
   postcode: "OX2 0NA",
   date: "24-07-2014",
+  time: "2000-01-01 20:00:00 UTC",
   host_id: 7
 )
 
@@ -274,7 +208,6 @@ Event.create!(
   address: "9 Back Hill",
   postcode: "EC1R 5EN",
   date: "15-07-2014",
+  time: "2000-01-01 19:00:00 UTC",
   host_id: 8
 )
-
-

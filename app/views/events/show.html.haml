@@ -32,8 +32,10 @@
     %h3
       = @event.description
 
+    %h4
+      = @event.time.strftime("%H:%M")
     %h4 
-      = @event.date
+      = @event.date.strftime("%d/%m/%y")
     %p
       %h4
         = [@event.address, @event.postcode].join(", ")

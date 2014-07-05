@@ -42,7 +42,8 @@ ActiveRecord::Schema.define(version: 20140704140747) do
     t.text     "description"
     t.text     "address"
     t.string   "postcode"
-    t.string   "date"
+    t.date     "date"
+    t.time     "time"
     t.integer  "host_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -60,7 +61,6 @@ ActiveRecord::Schema.define(version: 20140704140747) do
 
   create_table "invitations", force: true do |t|
     t.integer  "event_id"
-    t.integer  "host_id"
     t.integer  "invitee_id"
     t.boolean  "accepted"
     t.datetime "created_at"
