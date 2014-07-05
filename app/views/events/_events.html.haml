@@ -1,51 +1,27 @@
-%h1 Events
+.row
+  .col-md-6
+    %h2 Hosting
+    - @hosted_events.each do |event|
+      %h3  
+        = link_to event.title, event
+      %p
+        = event.address
+      %p
+        = event.date.strftime("%d/%m/%y")
 
-%table
-  %tr
-    %th Title
-    %th Description
-    %th Address
-    %th Date
-    %th Host
-    %th
-    %th
-    %th
+  
 
-  - @hosted_events.each do |event|
-    %tr
-      %td= event.title
-      %td= event.description
-      %td= event.address
-      %td= event.date
-      %td= event.host.username
-      %td= link_to 'Show', event
-      %td= link_to 'Edit', edit_event_path(event)
-      %td= link_to 'Destroy', event, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      / = link_to 'Edit', edit_event_path(event)
+      / = link_to 'Destroy', event, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-%br
+  .col-md-6
 
-%h1 Their Events
+    %h2 Going
+    - @invited_events.each do |event|
+      %h3 
+        = link_to event.title, event
+      %p
+        = event.address
+      %p
+        = event.date.strftime("%d/%m/%y")
 
-%table
-  %tr
-    %th Title
-    %th Description
-    %th Address
-    %th Date
-    %th Host
-    %th
-    %th
-    %th
-
-  - @invited_events.each do |event|
-    %tr
-      %td= event.title
-      %td= event.description
-      %td= event.address
-      %td= event.date
-      %td= event.host.username
-      %td= link_to 'Show', event
-
-%br
-
-= link_to 'New Event', new_event_path

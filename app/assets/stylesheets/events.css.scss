@@ -6,3 +6,21 @@
   height: 300px;
   border: 5px ridge grey;
 }
+
+h2 {
+  text-align: center;
+}
+
+.invitee_list {
+  height: 110px;
+  -webkit-column-count: 4;
+      -moz-column-count: 4;
+           column-count: 4;
+  -webkit-column-gap: 5px;
+     -moz-column-gap: 5px;
+          column-gap: 5xpx; 
+}
+
+.bio {
+  text-align: center;
+}

@@ -15,7 +15,7 @@
     \|
     = link_to 'Back', events_path
 
-    %h2 Updates
+    %h3 Updates
     - @event.comments.each do |comment|
       %p
         %b= comment.user.username
@@ -41,10 +41,11 @@
         = [@event.address, @event.postcode].join(", ")
 
     %h3 Who?
-    - @event.invitations.each do |invitation|
-      %p
-        / = invitation.invitee.image.profile.url, class: "small-avatar"
-        = invitation.invitee.name
+    .invitee_list
+      - @event.invitations.each do |invitation|
+        %p
+          / = invitation.invitee.image.profile.url, class: "small-avatar"
+          = link_to invitation.invitee.name, "/users/#{invitation.invitee.id}"
 
 
 

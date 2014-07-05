@@ -1,11 +1,13 @@
-%h1 
-  = current_user.name
+.col-md-6.col-md-offset-3
+  %h2 
+    = current_user.name
 
-%p
-  = image_tag current_user.image.profile.url, :class => "userimage"
-
-%h4
-  = current_user.bio
-
-= render partial: 'events/events'
-= link_to 'Edit profile', edit_user_registration_path
+  %p
+    = image_tag current_user.image.profile.url, :class => "userimage"
+  .bio  
+    %h4
+      = current_user.bio
+.col-md-12
+  = render partial: 'events/events'
+  = link_to 'Edit profile', edit_user_registration_path
+  = link_to 'New Event', new_event_path, class: "btn btn-primary"
