@@ -3,7 +3,8 @@ class EventsController < ApplicationController
 
   # GET /events
   def index
-    @events = current_user.events
+    @hosted_events = current_user.hosted_events
+    @invited_events = current_user
   end
 
   # GET /events/1
