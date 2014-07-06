@@ -3,8 +3,7 @@ class EventsController < ApplicationController
 
   # GET /events
   def index
-    @hosted_events = current_user.hosted_events
-    @invited_events = current_user.events
+    redirect_to profile_path
   end
 
   # GET /events/1
@@ -49,7 +48,7 @@ class EventsController < ApplicationController
   def destroy
     @event.destroy
     authorize! :destroy, @event
-    redirect_to events_url, notice: 'Event was successfully destroyed.'
+    redirect_to profile_path, notice: 'Event was successfully destroyed.'
   end
 
   private
