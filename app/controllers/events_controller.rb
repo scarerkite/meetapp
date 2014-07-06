@@ -8,7 +8,7 @@ class EventsController < ApplicationController
 
   # GET /events/1
   def show
-    authorize! :read, @event
+    #authorize! :read, @event
   end
 
   # GET /events/new
