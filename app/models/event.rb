@@ -14,10 +14,19 @@ class Event < ActiveRecord::Base
   validates :address, presence: true
   validates :postcode, presence: true
   validates :description, length: { :maximum => 250 }, allow_blank: true
+  validates :date, presence: true
+  validates :time, presence: true
 
   after_create :set_lat_lng
 
+  # before_update :update_address
+
   accepts_nested_attributes_for :invitations
+
+  # def update_address
+  #   if self.address.changed? || self.postcode.changed?
+  #     set_lat_lng
+  # end
 
   def set_lat_lng
     full_address = [self.address, self.postcode].join(", ")
