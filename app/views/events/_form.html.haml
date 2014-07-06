@@ -32,12 +32,12 @@
     = f.text_field :postcode, class: "form-control", placeholder: "Postcode"
   %h4
     Invite:
+
   .form-group
-    - User.all.each do |u|
-      -if u != current_user
-        = label_tag u.name.upcase
-        = check_box_tag "event[invitations_attributes][][invitee_id]", u.id
-        %br
+    - current_user.friends.each do |u|
+      = label_tag u.name
+      = check_box_tag "event[invitations_attributes][][invitee_id]", u.id
+      %br
         
   .actions
     = f.submit 'Save', class: "btn btn-primary"
