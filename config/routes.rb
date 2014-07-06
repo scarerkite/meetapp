@@ -16,6 +16,7 @@ Meetapp::Application.routes.draw do
     match 'users/:id' => 'users#show', via: :get
     match 'profile' => 'users#profile', via: :get
     match 'users' => 'users#index', via: :get
+    match 'invitations' => 'users#invitations', via: :get
     root 'devise/sessions#new'
   end
 

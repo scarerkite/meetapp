@@ -10,6 +10,10 @@ class UsersController < Devise::RegistrationsController
   def show
   end
 
+  def invitations
+    @invited_events = current_user.events
+  end
+
   def profile
     @hosted_events = current_user.hosted_events
     @invited_events = current_user.events
