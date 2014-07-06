@@ -3,18 +3,23 @@ class Ability
 
   def initialize(user)
     user ||= User.new
-    if user.role == :admin
+    if user.role == "admin"
       can :manage, :all
-    elsif user.role == :user
+    elsif user.role == "user"
       can :create, [Comment, Event]  
       can :destroy, Comment do |comment|  
         comment.try(:user) == user
       end  
-      can [:read, :update, :destroy], Event do |event|  
-        event.try(:user) == user 
+      can [:update, :destroy], Event do |event|  
+        event.try(:host) == user 
       end
-      # can read event if invitation
-      # can comment on event if invitation
+      can :read, Event do |event|
+        # if
+          event.try(:host) == user
+        # elsif
+        #   event.invitations.try(:invitee) == user
+        # end
+      end
     end     
   end
 end

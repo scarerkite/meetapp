@@ -9,22 +9,25 @@ class EventsController < ApplicationController
 
   # GET /events/1
   def show
+    authorize! :read, @event
   end
 
   # GET /events/new
   def new
     @event = Event.new
+    authorize! :new, @event
   end
 
   # GET /events/1/edit
   def edit
+    authorize! :edit, @event
   end
 
   # POST /events
   def create
     @event = Event.new(event_params)
     @event.host = current_user
-
+    authorize! :create, @event
     if @event.save
       redirect_to @event, notice: 'Event was successfully created.'
     else
@@ -34,6 +37,7 @@ class EventsController < ApplicationController
 
   # PATCH/PUT /events/1
   def update
+    authorize! :update, @event
     if @event.update(event_params)
       redirect_to @event, notice: 'Event was successfully updated.'
     else
@@ -44,6 +48,7 @@ class EventsController < ApplicationController
   # DELETE /events/1
   def destroy
     @event.destroy
+    authorize! :destroy, @event
     redirect_to events_url, notice: 'Event was successfully destroyed.'
   end
 

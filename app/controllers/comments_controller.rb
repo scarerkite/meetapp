@@ -21,11 +21,11 @@ class CommentsController < ApplicationController
 
   # POST /comments
   def create
-    
+    authorize! :create, Comment
     @event = Event.find(params[:event_id])
     @comment = @event.comments.build comment_params
     @comment.user = current_user
-    @comment.save
+    @comment.save!
 
 
     if @comment.save
@@ -36,16 +36,17 @@ class CommentsController < ApplicationController
   end
 
   # PATCH/PUT /comments/1
-  def update
-    if @comment.update(comment_params)
-      redirect_to @event, notice: 'Update was successfully updated.'
-    else
-      render action: 'edit'
-    end
-  end
+  # def update
+  #   if @comment.update(comment_params)
+  #     redirect_to @event, notice: 'Update was successfully updated.'
+  #   else
+  #     render action: 'edit'
+  #   end
+  # end
 
   # DELETE /comments/1
   def destroy
+    authorize! :destroy, @comment
     @comment.destroy
     redirect_to @event, notice: 'Update was successfully deleted.'
   end
@@ -53,7 +54,8 @@ class CommentsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_comment
-      @comment = Comment.find(params[:id])
+      @event = Event.find(params[:event_id])
+      @comment = @event.comments.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.

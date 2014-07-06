@@ -16,13 +16,15 @@ class User < ActiveRecord::Base
 
 
   validates :name, presence: true
-  validates :username, uniqueness: true
+  validates :username, uniqueness: true, presence: true
   validates :bio, length: { :maximum => 250 }, allow_blank: true
   
 
   has_many :authentications
 
   mount_uploader :image, ImageUploader
+
+  before_create :set_default_role
 
 
 
@@ -62,5 +64,10 @@ class User < ActiveRecord::Base
         user.skip_confirmation! # don't require email confirmation
       end
     end
+  end
+
+  private
+  def set_default_role
+    self.role ||= 'user'
   end
 end

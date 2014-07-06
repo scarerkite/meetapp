@@ -1,6 +1,6 @@
 .row
   .col-md-6
-    %h2 Hosting
+    %h3 Hosting
     - @hosted_events.each do |event|
       %h3  
         = link_to event.title, event
@@ -16,7 +16,7 @@
 
   .col-md-6
 
-    %h2 Going
+    %h3 Going
     - @invited_events.each do |event|
       %h3 
         = link_to event.title, event

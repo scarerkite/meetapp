@@ -16,10 +16,13 @@
     = link_to 'Back', events_path
 
     %h3 Updates
-    - @event.comments.each do |comment|
+    - @event.comments.order('created_at DESC').each do |comment|
       %p
-        %b= comment.user.username
-        = comment.body
+        %h4= comment.user.username
+        %h5= comment.body
+        (#{time_ago_in_words(comment.created_at)} ago)
+        - if comment.user == current_user
+          = link_to 'Delete', [@event, comment], :method => :delete, :data => { :confirm => 'Are you sure?' }
 
     
     .form-group
