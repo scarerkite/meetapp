@@ -4,12 +4,10 @@ class FriendshipsController < ApplicationController
 
   # POST /friendships
   def create
+    binding.pry
     current_user.friendships.create(params[:friendship])
     flash[:notice] = "Friendship request sent..."
     redirect_to :back
-    # @user = User.find(params[:friendship][:friend_id])
-    # current_user.friendships.create(friend: @user)
-    # redirect_to :back
   end
 
   def accept_invitation
