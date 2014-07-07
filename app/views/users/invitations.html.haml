@@ -5,8 +5,10 @@
     - current_user.requested_friendships.each do |u|
       %h3
         = link_to u.name, "/users/#{u.id}"
-      / = link_to "Accept", accept_friend(u), method: :post
-      / = link_to "Decline", decline_friend(u), method: :post
+      - invite = current_user.inverse_friendships.find_by(user_id: u.id)
+      - i = invite.id
+      = link_to "Accept", accept_invitation_friendship_path(i), method: :post, class: "btn btn-primary"
+      = link_to "Decline", decline_invitation_friendship_path(i), method: :post, class: "btn btn-primary"
 
 
   .col-md-6

@@ -1,20 +1,43 @@
-class FriendshipsController < Devise::RegistrationsController
+class FriendshipsController < ApplicationController
 
+  before_action :authenticate_user!
+
+  # POST /friendships
   def create
-    @friendship.user = current_user
-    @friendship.friend = User.find(params[:id])
-
-    if @friendship.save
-      redirect_to root_url, notice: 'Friend was successfully added.'
-    else
-      redirect_to root_url, notice: 'Unable to add friend'
-    end
+    @user = User.find(params[:friendship][:friend_id])
+    current_user.friendships.create(friend: @user)
+    redirect_to :back
+    # @user = User.find(params[:friendship][:friend_id])
+    # current_user.friendships.create(friend: @user)
+    # redirect_to :back
   end
 
+  def accept_invitation
+    friendship = current_user.requested_friendships.find(params[:id])
+    friendship.accepted = true
+    friendship.save!
+    redirect_to :back
+  end
 
+  def decline_invitation
+    friendship = current_user.requested_friendships.find(params[:id])
+    friendship.accepted = false
+    friendship.save!
+    redirect_to :back
+  end
 
-
-
-
+  # POST /friendships/99/revoke?user_id=1
+  # POST /friendships/99/revoke?friend_id=2
+  def revoke
+    friendship = if params[:user_id]
+      Friendship.where(id: params[:id], user_id: params[:user_id], friend_id: current_user.id)
+    elsif params[:friend_id]
+      current_user.friendships.where(id: params[:id], friend_id: params[:friend_id])
+    end
+    if friendship
+      friendship.accepted = false
+      friendship.save!
+    end
+  end
 
 end

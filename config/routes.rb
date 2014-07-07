@@ -10,12 +10,22 @@ Meetapp::Application.routes.draw do
 
   devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks", registrations: 'registrations' }
 
+  resources :friendships, only: [:create] do
+    member do
+      post :accept_invitation
+      post :decline_invitation
+      post :revoke
+    end
+  end
 
   devise_scope :user do
-    resources :friendships
-    match 'users/:id' => 'users#show', via: :get
+    resources :users, only: [:show, :index] do
+      # member do 
+      #   post   :befriend
+      #   delete :unfriend
+      # end
+    end
     match 'profile' => 'users#profile', via: :get
-    match 'users' => 'users#index', via: :get
     match 'invitations' => 'users#invitations', via: :get
     root 'devise/sessions#new'
   end
