@@ -9,15 +9,13 @@
   .col-md-6
     #map_canvas
 
-    = link_to 'Edit', edit_event_path(@event)
-    \|
-    = link_to 'Send invitations', new_event_invitation_path(@event)
-    \|
-    = link_to 'Back', events_path
+    = link_to 'Edit', edit_event_path(@event), class: "btn btn-primary"
 
-    %button
-      #current-position
-        Update location
+
+
+
+    #current-position.btn.btn-primary
+      Update location
 
     / = button_to "Accept", invitations_path, method: :post
     / = button_to "Decline", invitations_path, method: :post

@@ -1,6 +1,16 @@
 // Place all the styles related to the events controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.nav-container {
+  width: 940px;
+  margin: auto;
+}
+
+
+body {
+  background-color: #72B2A9;
+}
+
 #map_canvas{
   width: 500px;
   height: 300px;
@@ -22,9 +32,9 @@
 }
 
 .container {
-  margin-top: 40px;
+  margin-top: 90px;
   margin-bottom: 40px;
-  background-color: #BBF0EA;
+  background-color: #B9EDDE;
   border-radius: 10px;
 }
 
