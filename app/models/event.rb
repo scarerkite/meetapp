@@ -19,14 +19,15 @@ class Event < ActiveRecord::Base
 
   after_create :set_lat_lng
 
-  # before_update :update_address
+  before_save :update_address
+  before_update :update_address
 
   accepts_nested_attributes_for :invitations
 
-  # def update_address
-  #   if self.address.changed? || self.postcode.changed?
-  #     set_lat_lng
-  # end
+  def update_address
+    set_lat_lng if self.address_changed? || self.postcode.changed?
+      
+  end
 
   def set_lat_lng
     full_address = [self.address, self.postcode].join(", ")

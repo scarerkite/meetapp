@@ -10,6 +10,6 @@
 / = link_to "Add friend", befriend_user_path(@user), method: :post, class: "btn btn-primary"
 
 
-= form_for @user.friendships.build do |f|
+= form_for @user.inverse_friendships.build, url: friendships_path do |f|
   = f.hidden_field :friend_id
   = f.submit "Befriend", class: "btn btn-primary"

@@ -4,8 +4,8 @@ class FriendshipsController < ApplicationController
 
   # POST /friendships
   def create
-    @user = User.find(params[:friendship][:friend_id])
-    current_user.friendships.create(friend: @user)
+    current_user.friendships.create(params[:friendship])
+    flash[:notice] = "Friendship request sent..."
     redirect_to :back
     # @user = User.find(params[:friendship][:friend_id])
     # current_user.friendships.create(friend: @user)
@@ -13,15 +13,15 @@ class FriendshipsController < ApplicationController
   end
 
   def accept_invitation
-    friendship = current_user.requested_friendships.find(params[:id])
-    friendship.accepted = true
+    friendship = current_user.inverse_friendships.find(params[:id])
+    friendship.approved = true
     friendship.save!
     redirect_to :back
   end
 
   def decline_invitation
-    friendship = current_user.requested_friendships.find(params[:id])
-    friendship.accepted = false
+    friendship = current_user.inverse_friendships.find(params[:id])
+    friendship.approved = false
     friendship.save!
     redirect_to :back
   end
