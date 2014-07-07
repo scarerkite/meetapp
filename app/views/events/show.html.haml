@@ -15,6 +15,9 @@
     \|
     = link_to 'Back', events_path
 
+    / = button_to "Accept", invitations_path, method: :post
+    / = button_to "Decline", invitations_path, method: :post
+
     %h3 Updates
     - @event.comments.order('created_at DESC').each do |comment|
       %p
@@ -28,7 +31,7 @@
     .form-group
       = form_for [@event, Comment.new] do |f|
         %p= f.text_area :body
-        %p= f.submit "Post update"
+        %p= f.submit "Post update", class: "btn btn-primary"
 
   .col-md-6
     
