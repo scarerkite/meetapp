@@ -36,11 +36,15 @@ class EventsController < ApplicationController
 
   # PATCH/PUT /events/1
   def update
-    authorize! :update, @event
-    if @event.update(event_params)
-      redirect_to @event, notice: 'Event was successfully updated.'
-    else
-      render action: 'edit'
+    # authorize! :update, @event 
+    respond_to do |format|
+      if @event.update_attributes(event_params)
+        format.html { redirect_to @event, notice: 'Post was successfully updated.' }
+        format.json { render json: @event, status: :ok }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @event.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -59,6 +63,6 @@ class EventsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def event_params
-      params.require(:event).permit(:title, :description, :address, :time, :date, :postcode, :comment, :latitude, :longitude, {invitations_attributes:[:invitee_id]})
+      params.require(:event).permit(:id, :title, :description, :address, :time, :date, :postcode, :comment, :latitude, :longitude, {invitations_attributes:[:invitee_id]})
     end
 end

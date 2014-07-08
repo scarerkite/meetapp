@@ -25,7 +25,7 @@ class Event < ActiveRecord::Base
   accepts_nested_attributes_for :invitations
 
   def update_address
-    set_lat_lng if self.address_changed? || self.postcode.changed?
+    set_lat_lng if self.address_changed? || self.postcode_changed?
       
   end
 
