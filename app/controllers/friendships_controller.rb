@@ -4,7 +4,7 @@ class FriendshipsController < ApplicationController
 
   # POST /friendships
   def create
-    current_user.friendships.create(params[:friendship])
+    current_user.friendships.create(friendship_params)
     flash[:notice] = "Friendship request sent..."
     redirect_to :back
   end
@@ -35,6 +35,12 @@ class FriendshipsController < ApplicationController
       friendship.accepted = false
       friendship.save!
     end
+  end
+
+  private
+
+  def friendship_params
+    params.require(:acts_as_friendable_friendship).permit(:friend_id)
   end
 
 end
