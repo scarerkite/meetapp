@@ -3,7 +3,12 @@ Meetapp::Application.routes.draw do
 
   resources :events do 
     resources :comments
-    resources :invitations
+    resources :invitations do
+      member do
+        post :accept_invitation
+        post :decline_invitation
+      end
+    end
   end
 
 

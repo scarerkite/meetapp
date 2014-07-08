@@ -15,6 +15,20 @@ class InvitationsController < ApplicationController
     @invitation = Invitation.new
   end
 
+  def accept_invitation
+    invitation = Invitation.find(params[:id])
+    invitation.accepted = true
+    invitation.save!
+    redirect_to :back
+  end
+
+  def decline_invitation
+    invitation = Invitation.find(params[:id])
+    invitation.accepted = false
+    invitation.save!
+    redirect_to :back
+  end
+
   # GET /invitations/1/edit
   def edit
   end
