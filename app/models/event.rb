@@ -1,6 +1,16 @@
 class Event < ActiveRecord::Base
   include EventsHelper
 
+  reverse_geocoded_by :latitude, :longitude do |obj, results|
+    if geo = results.first
+      # populate your model
+      obj.city    = geo.city
+      obj.zipcode = geo.postal_code
+      obj.country = geo.country_code
+    end
+  end
+  before_update :reverse_geocode, if: :longitude_changed?
+
   belongs_to :host, class_name: "User", foreign_key: "host_id"
   has_many :comments
   has_many :invitations
@@ -24,9 +34,10 @@ class Event < ActiveRecord::Base
 
   accepts_nested_attributes_for :invitations
 
+
+
   def update_address
     set_lat_lng if self.address_changed? || self.postcode_changed?
-      
   end
 
   def set_lat_lng

@@ -57,26 +57,11 @@ function addMarker(map, latLng) {
         console.log("event location updated", data)
       }
     })
-
-    //do an ajax call to event update sending new position
-    // { event:{
-    //   latitude: position.coords.latitude,
-    //   longitude: position.coords.longitude
-    // }
-
-    // }
   }
 
   function handleLocationError(error){
     alert(error);
   }
 
-
-
-
-
-
-
-   
 $(initialize)
  // google.maps.event.addDomListener(window, 'load', initialize);

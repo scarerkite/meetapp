@@ -15,11 +15,12 @@
     %h3
       Event invites
     - @invited_events.order('created_at ASC').each do |event|
-      %h3 
-        = link_to event.title, event
-      %p
-        = event.description
-      %p
-        = event.date.strftime("%d/%m/%y")
+      - if current_user.invitations.where("event: event AND accepted: nil")
+        %h3 
+          = link_to event.title, event
+        %p
+          = event.description
+        %p
+          = event.date.strftime("%d/%m/%y")
       / = link_to "Accept", accept_invitation(event), method: :post
       / = link_to "Decline", decline_invitation(event), method: :post
