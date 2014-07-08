@@ -4,7 +4,6 @@ class FriendshipsController < ApplicationController
 
   # POST /friendships
   def create
-    binding.pry
     current_user.friendships.create(params[:friendship])
     flash[:notice] = "Friendship request sent..."
     redirect_to :back

@@ -42,6 +42,22 @@ function addMarker(map, latLng) {
     });
     map.setCenter(latLng);
     map.setZoom(16);
+    // function updateCoords(id){
+    // path = /events/#{id}; // window.location.pathname
+    // $.ajax({
+    //   url: path,
+    //   type: "PUT",
+    //   data {
+    //     event:{
+    //       latitude: position.coords.latitude,
+    //       longitude: position.coords.longitude
+    //     }
+    //   }
+    //   dataType: 'json'
+    //   success:(data)
+
+    // })
+    // }
 
     //do an ajax call to event update sending new position
     // { event:{
@@ -56,14 +72,7 @@ function addMarker(map, latLng) {
     alert(error);
   }
 
-  // $("#current-position").on("click", function(){
-  //   if(navigator.geolocation){
-  //     navigator.geolocation.getCurrentPosition(updateLocation, handleLocationError);
-  //     navigator.geolocation.watchPosition(updateLocation, handleLocationError);
-  //   }else{
-  //     alert("Oh no! This browser doesn't support HTML5 geolocation API.");
-  //   }
-  // })
+
 
 
 
