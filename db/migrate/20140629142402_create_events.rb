@@ -8,6 +8,7 @@ class CreateEvents < ActiveRecord::Migration
       t.date :date
       t.time :time
       t.integer :host_id
+      t.boolean :cancelled
 
       t.timestamps
     end

@@ -53,8 +53,8 @@ Event.create!(
 )
 
 Event.create!(
-  title: "Bye Bye Charlotte",
-  description: "Charlotte's going away party",
+  title: "Charlotte's leaving do",
+  description: "Charlotte's farewell",
   address: "13 Eyre Street Hill",
   postcode: "EC1R 5ET",
   date: "24-08-2014",
@@ -63,7 +63,7 @@ Event.create!(
 )
 
 Event.create!(
-  title: "Bye Bye Hilda",
+  title: "Good riddance Hilda",
   description: "Hilda's going away party",
   address: "The Crown Tavern, 43 Clerkenwell Green",
   postcode: "EC1R 0EG",

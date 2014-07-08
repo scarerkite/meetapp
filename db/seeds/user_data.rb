@@ -16,7 +16,7 @@ alice = User.new(
 bob = User.new(
   name: "Bob Byron",
   username: "bob",
-  role: "admin",
+  role: "user",
   bio: "Live in London, enjoy going out.",
   email: "bob@bob.com",
   password: "password"
@@ -79,6 +79,7 @@ hilda = User.new(
 ida = User.new(
   name: "Ida Ilks",
   username: "ida",
+  role: "user",
   bio: "Live in London, enjoy going out.",
   email: "ida@ida.com",
   password: "password"
@@ -87,14 +88,15 @@ ida = User.new(
 jack = User.new(
   name: "Jack Jones",
   username: "jack",
+  role: "user",
   bio: "Live in London, enjoy going out.",
   email: "jack@jack.com",
   password: "password"
 )
 
-[alice, bob, charlotte, dan, ed, fran, gary, hilda, ida, jack].each(&:skip_confirmation!).each(&:save!)
+#[alice, bob, charlotte, dan, ed, fran, gary, hilda, ida, jack].each(&:skip_confirmation!).each(&:save!)
 
-
+[alice, bob, charlotte, dan, ed, fran, gary, hilda, ida, jack].each(&:save!)
 
 
 

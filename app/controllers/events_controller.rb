@@ -26,6 +26,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.host = current_user
+    @event.cancelled = false
     authorize! :create, @event
     if @event.save
       redirect_to @event, notice: 'Event was successfully created.'

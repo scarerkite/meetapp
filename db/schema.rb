@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20140704140747) do
     t.date     "date"
     t.time     "time"
     t.integer  "host_id"
+    t.boolean  "cancelled"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.float    "latitude"

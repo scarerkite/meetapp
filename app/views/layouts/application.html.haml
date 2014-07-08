@@ -20,13 +20,12 @@
           - if user_signed_in?
             %ul.nav.navbar-nav
               / %li
-              /   = link_to 'View Profile', profile_path
-              %li
-                = link_to profile_path, :class => "nav navbar-nav" do
-                  #pic
-                    = image_tag(current_user.image.profile.url, class: "small-avatar")
+              /   = link_to 'View Profile', profile_path 
               %li
                 = link_to 'View Invitations', invitations_path
+              %li
+                = link_to profile_path do
+                  = image_tag(current_user.image.profile.url, class: "small-avatar")
             %ul.nav.navbar-nav.navbar-right  
               %li.dropdown
                 %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}

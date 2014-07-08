@@ -32,9 +32,10 @@ class FriendshipsController < ApplicationController
       current_user.friendships.where(id: params[:id], friend_id: params[:friend_id])
     end
     if friendship
-      friendship.accepted = false
+      friendship.approved = false
       friendship.save!
     end
+    redirect_to :profile
   end
 
   private
