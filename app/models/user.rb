@@ -66,6 +66,11 @@ class User < ActiveRecord::Base
     end
   end
 
+
+  def said_yes? event
+    invitations.where("event_id= ? AND accepted= 't' ", event.id).empty?
+  end
+
   private
   def set_default_role
     self.role ||= 'user'

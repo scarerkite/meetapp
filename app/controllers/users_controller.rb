@@ -20,12 +20,12 @@ class UsersController < Devise::RegistrationsController
   end
 
   def invitations
-    @invited_events = current_user.events
+    @pending_invitations = current_user.invitations.where("accepted IS NULL").order('created_at ASC')
   end
 
   def profile
     @hosted_events = current_user.hosted_events
-    @invited_events = current_user.events
+    @invited_events = current_user.events.order('date ASC')
   end
 
   private

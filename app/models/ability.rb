@@ -14,11 +14,8 @@ class Ability
         event.try(:host) == user 
       end
       can :read, Event do |event|
-        # if
-          event.try(:host) == user
-        # elsif
-        #   event.invitations.try(:invitee) == user
-        # end
+          event.host_id == user.id || event.invitations.select{ |invitation| invitation.invitee_id==user.id}.any?
+
       end
     end     
   end
