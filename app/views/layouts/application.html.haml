@@ -19,9 +19,12 @@
         #navbar-collapse-1.collapse.navbar-collapse
           - if user_signed_in?
             %ul.nav.navbar-nav
+              / %li
+              /   = link_to 'View Profile', profile_path
               %li
-                = link_to 'View Profile', profile_path
-                 
+                = link_to profile_path, :class => "nav navbar-nav" do
+                  #pic
+                    = image_tag(current_user.image.profile.url, class: "small-avatar")
               %li
                 = link_to 'View Invitations', invitations_path
             %ul.nav.navbar-nav.navbar-right  
@@ -57,13 +60,6 @@
               %li
                 = link_to 'Sign in', new_user_session_path
     .container
-      - if user_signed_in?
-        - if current_user.image? && current_user.name?
-          = image_tag current_user.image.profile.url, class: "small-avatar"
-          %b= current_user.name
-        - else
-          Logged in as
-          %b= current_user.name
       - flash.each do |name, msg|
         = content_tag :div, msg, :id => "flash_#{name}"
       = yield
