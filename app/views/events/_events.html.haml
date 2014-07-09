@@ -1,7 +1,8 @@
 .row
   .col-md-6
     - if @hosted_events.any?
-      %h3 Hosting
+      .list_headings
+        %h3 Hosting
       .col-md-12
         - @hosted_events.order('date ASC').each do |event|
           .panel.panel-default
@@ -14,8 +15,9 @@
               %p
                 = event.date.strftime("%d/%m/%y")
     - else
-      %h4
-        You're not currently hosting any events.
+      .list_headings
+        %h4
+          You're not currently hosting any events.
 
   
 
@@ -24,7 +26,8 @@
 
   .col-md-6
     - if @invited_events.any?
-      %h3 Going
+      .list_headings
+        %h3 Going
       .col-md-12
         .event_list        
           - @invited_events.each do |event|
@@ -39,5 +42,6 @@
                   %p
                     = event.date.strftime("%d/%m/%y")
     - else
-      %h4
-        You're not currently going to any events.
+      .list_headings
+        %h4
+          You're not currently going to any events.

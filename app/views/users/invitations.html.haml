@@ -1,8 +1,9 @@
 .row
   .col-md-6
     - if current_user.requested_friendships.any?
-      %h3 
-        Friend requests
+      .list_headings
+        %h3 
+          Friend requests
       - current_user.requested_friendships.each do |u|
         %h3
           = link_to u.name, "/users/#{u.id}"
@@ -11,14 +12,16 @@
         = link_to "Accept", accept_invitation_friendship_path(i), method: :post, class: "btn btn-primary"
         = link_to "Decline", decline_invitation_friendship_path(i), method: :post, class: "btn btn-primary"
     - else
-      %h4
-        You have no current friend requests.
+      .list_headings
+        %h4
+          You have no current friend requests.
 
 
   .col-md-6
     - if @pending_invitations.any?
-      %h3
-        Event invites
+      .list_headings
+        %h3
+          Event invites
       - @pending_invitations.each do |invitation|
         .panel.panel-default
           .panel-heading
@@ -32,5 +35,6 @@
         = link_to "Accept", accept_invitation_event_invitation_path(invitation.event.id, invitation.id), method: :post
         = link_to "Decline", decline_invitation_event_invitation_path(invitation.event.id, invitation.id), method: :post
     - else
-      %h4
-        You have no current event invitations.
+      .list_headings
+        %h4
+          You have no current event invitations.
