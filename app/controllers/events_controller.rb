@@ -24,6 +24,7 @@ class EventsController < ApplicationController
 
   # POST /events
   def create
+    binding.pry
     @event = Event.new(event_params)
     @event.host = current_user
     @event.cancelled = false

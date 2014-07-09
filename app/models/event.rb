@@ -1,5 +1,6 @@
 class Event < ActiveRecord::Base
   include EventsHelper
+  require "uk_postcode"
 
   # reverse_geocoded_by :latitude, :longitude do |obj, results|
   #   if geo = results.first
@@ -27,13 +28,24 @@ class Event < ActiveRecord::Base
   validates :date, presence: true
   validates :time, presence: true
 
-  after_create :set_lat_lng
+  # after_create :set_lat_lng
 
-  before_save :update_address
-  before_update :update_address
+  # before_save :postcode_valid?
+
+  # before_save :update_address
+  # before_update :update_address
 
   accepts_nested_attributes_for :invitations
 
+
+  # def postcode_valid?
+  #   if self.postcode.valid?
+  #     postcode.norm
+  #     self.save
+  #   else
+  #     redirect_to self.edit, notice: 'Invalid Postcode, please try again.'
+  #   end
+  # end
 
 
   def update_address

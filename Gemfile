@@ -68,6 +68,8 @@ gem 'figaro'
 
 gem 'autoprefixer-rails'
 
+gem 'uk_postcode'
+
 gem 'acts_as_friendable', github: "rhannequin/acts_as_friendable"
 
 group :development, :test do
