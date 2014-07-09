@@ -118,7 +118,22 @@ Event.create!(
   postcode: "OX4 1XG",
   date: "15-08-2014",
   time: "2000-01-01 18:00:00 UTC",
-  host_id: 1,
+  host_id: 7,
   latitude: 51.7457080,
   longitude: -1.2307650
 )
+
+Event.create!(
+  title: "Gamesnight",
+  description: "Boardgamery",
+  address: "99 Gloucester St, Oxford, Oxon",
+  postcode: "OX1 2DF",
+  date: "15-08-2014",
+  time: "2000-01-01 18:00:00 UTC",
+  host_id: 10,
+  latitude: 51.7545660,
+  longitude: -1.2611740
+)
+
+
+

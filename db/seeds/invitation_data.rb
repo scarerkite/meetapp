@@ -53,3 +53,54 @@ Invitation.create!(
   event_id: 2,
   invitee_id: 7,
 )
+
+Invitation.create!(
+  event_id: 11,
+  invitee_id: 4,
+)
+
+Invitation.create!(
+  event_id: 11,
+  invitee_id: 6,
+)
+
+Invitation.create!(
+  event_id: 11,
+  invitee_id: 7,
+)
+
+Invitation.create!(
+  event_id: 11,
+  invitee_id: 8,
+)
+
+Invitation.create!(
+  event_id: 11,
+  invitee_id: 9,
+)
+
+Invitation.create!(
+  event_id: 8,
+  invitee_id: 4,
+)
+
+Invitation.create!(
+  event_id: 8,
+  invitee_id: 6,
+)
+
+Invitation.create!(
+  event_id: 8,
+  invitee_id: 7,
+)
+
+Invitation.create!(
+  event_id: 8,
+  invitee_id: 8,
+)
+
+Invitation.create!(
+  event_id: 8,
+  invitee_id: 9,
+)
+

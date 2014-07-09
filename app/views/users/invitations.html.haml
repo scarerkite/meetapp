@@ -1,9 +1,9 @@
 .row
   .col-md-6
-    - if current_user.requested_friendships.any?
-      .list_headings
-        %h3 
-          Friend requests
+    .list_headings
+      %h3 
+        Friend requests
+    - if current_user.requested_friendships.any? 
       - current_user.requested_friendships.each do |u|
         %h3
           = link_to u.name, "/users/#{u.id}"
@@ -18,10 +18,10 @@
 
 
   .col-md-6
+    .list_headings
+      %h3
+        Event invites
     - if @pending_invitations.any?
-      .list_headings
-        %h3
-          Event invites
       - @pending_invitations.each do |invitation|
         .panel.panel-default
           .panel-heading
