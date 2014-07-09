@@ -25,23 +25,24 @@
       / = link_to 'Destroy', event, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
   .col-md-6
-    - if @invited_events.any?
-      .list_headings
-        %h3 Going
-      .col-md-12
-        .event_list        
-          - @invited_events.each do |event|
-            - unless current_user.said_yes? event
-              .panel.panel-default
-                .panel-heading
-                  %h4 
-                    = link_to event.title, event
-                .panel-body
-                  %p
-                    = event.address
-                  %p
-                    = event.date.strftime("%d/%m/%y")
-    - else
-      .list_headings
-        %h4
-          You're not currently going to any events.
+    - @invited_events.each do |event|
+      - unless current_user.said_yes? event
+        .list_headings
+          %h3 Going
+        .col-md-12
+          .event_list        
+            - @invited_events.each do |event|
+              - unless current_user.said_yes? event
+                .panel.panel-default
+                  .panel-heading
+                    %h4 
+                      = link_to event.title, event
+                  .panel-body
+                    %p
+                      = event.address
+                    %p
+                      = event.date.strftime("%d/%m/%y")
+      - else
+        .list_headings
+          %h4
+            You're not currently going to any events.

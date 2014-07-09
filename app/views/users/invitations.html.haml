@@ -32,8 +32,8 @@
               = invitation.event.description
             %p
               = invitation.event.date.strftime("%d/%m/%y")
-        = link_to "Accept", accept_invitation_event_invitation_path(invitation.event.id, invitation.id), method: :post
-        = link_to "Decline", decline_invitation_event_invitation_path(invitation.event.id, invitation.id), method: :post
+        = link_to "Accept", accept_invitation_event_invitation_path(invitation.event.id, invitation.id), method: :post, class: "btn btn-primary"
+        = link_to "Decline", decline_invitation_event_invitation_path(invitation.event.id, invitation.id), method: :post, class: "btn btn-primary"
     - else
       .list_headings
         %h4
