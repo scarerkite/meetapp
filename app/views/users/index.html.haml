@@ -1,7 +1,17 @@
+.col-md-6
+  %h2 People
+  - @users.each do |user|
+    - unless user == current_user
+      - unless current_user.friends.include?(user)
+        %h3 
+          = link_to user.name, "/users/#{user.id}"
+        = link_to "/users/#{user.id}" do
+          = image_tag user.image.profile.url, :class => "userimage"
 
-- @users.each do |user|
-  - unless user == current_user
-    %h2 
-      = link_to user.name, "/users/#{user.id}"
-    = link_to "/users/#{user.id}" do
-      = image_tag user.image.profile.url, :class => "userimage"
+.col-md-6
+  %h2 Friends
+  - current_user.friends.each do |friend|
+    %h3 
+      = link_to friend.name, "/users/#{friend.id}"
+    = link_to "/users/#{friend.id}" do
+      = image_tag friend.image.profile.url, :class => "userimage"
