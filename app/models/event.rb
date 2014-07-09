@@ -1,7 +1,7 @@
 class Event < ActiveRecord::Base
   include EventsHelper
-  include ActiveModel::Validations
-  require "uk_postcode"
+  #include ActiveModel::Validations
+  #require "uk_postcode"
 
   # reverse_geocoded_by :latitude, :longitude do |obj, results|
   #   if geo = results.first
@@ -32,7 +32,7 @@ class Event < ActiveRecord::Base
   #   postcode.postcode_valid?
   # end
 
-  # after_create :set_lat_lng
+  after_create :set_lat_lng
 
   # before_save :update_address
   # before_update :update_address
@@ -50,11 +50,20 @@ class Event < ActiveRecord::Base
     set_lat_lng if self.address_changed? || self.postcode_changed?
   end
 
+
   def set_lat_lng
     full_address = [self.address, self.postcode].join(", ")
-    self.latitude = get_coords(full_address).first
-    self.longitude = get_coords(full_address).last
+    self.latitude = get_coords(full_address)["lat"]
+    self.longitude = get_coords(full_address)["lng"]
     self.save
   end
+
+  # Bing
+  # def set_lat_lng
+  #   full_address = [self.address, self.postcode].join(", ")
+  #   self.latitude = get_coords(full_address).first
+  #   self.longitude = get_coords(full_address).last
+  #   self.save
+  # end
 
 end
