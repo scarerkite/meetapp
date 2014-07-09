@@ -23,6 +23,7 @@
     %h3 Updates
     - @event.comments.order('created_at DESC').each do |comment|
       %p
+        = image_tag(comment.user.image.profile.url, class: "small-avatar")
         %h4= comment.user.username
         %h5= comment.body
         (#{time_ago_in_words(comment.created_at)} ago)
@@ -52,7 +53,8 @@
     .invitee_list
       - @event.invitations.each do |invitation|
         %p
-          / = invitation.invitee.image.profile.url, class: "small-avatar"
+          = link_to profile_path do
+            = image_tag(invitation.invitee.image.profile.url, class: "small-avatar")
           = link_to invitation.invitee.name, "/users/#{invitation.invitee.id}"
 
 

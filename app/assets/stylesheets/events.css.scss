@@ -1,6 +1,7 @@
 // Place all the styles related to the events controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
 .nav-container {
   width: 290px;
   margin: auto;
@@ -27,9 +28,9 @@ body {
 
 .invitee_list {
   height: 110px;
-  -webkit-column-count: 4;
-      -moz-column-count: 4;
-           column-count: 4;
+  -webkit-column-count: 3;
+      -moz-column-count: 3;
+           column-count: 3;
   -webkit-column-gap: 5px;
      -moz-column-gap: 5px;
           column-gap: 5xpx; 
@@ -55,3 +56,5 @@ body {
 .event_list h3 {
   display: block;
 }
+
+
