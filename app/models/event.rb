@@ -1,15 +1,15 @@
 class Event < ActiveRecord::Base
   include EventsHelper
 
-  reverse_geocoded_by :latitude, :longitude do |obj, results|
-    if geo = results.first
-      # populate your model
-      obj.city    = geo.city
-      obj.zipcode = geo.postal_code
-      obj.country = geo.country_code
-    end
-  end
-  before_update :reverse_geocode, if: :longitude_changed?
+  # reverse_geocoded_by :latitude, :longitude do |obj, results|
+  #   if geo = results.first
+  #     # populate your model
+  #     obj.city    = geo.city
+  #     obj.zipcode = geo.postal_code
+  #     obj.country = geo.country_code
+  #   end
+  # end
+  # before_update :reverse_geocode, if: :longitude_changed?
 
   belongs_to :host, class_name: "User", foreign_key: "host_id"
   has_many :comments
@@ -42,8 +42,8 @@ class Event < ActiveRecord::Base
 
   def set_lat_lng
     full_address = [self.address, self.postcode].join(", ")
-    self.latitude = get_coords(full_address)["lat"]
-    self.longitude = get_coords(full_address)["lng"]
+    self.latitude = get_coords(full_address).first
+    self.longitude = get_coords(full_address).last
     self.save
   end
 

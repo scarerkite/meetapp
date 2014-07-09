@@ -11,10 +11,20 @@
 
   / = link_to "Add friend", befriend_user_path(@user), method: :post, class: "btn btn-primary"
 
-  - if friendship(params[:id])
-    = link_to "Unfriend", revoke_friendship_path(friendship.id), method: :post, class: "btn btn-primary"
+  - case @friend_status
+    - when :pending
+      %p Friendship pending
+    - when :friend
+      = link_to "Unfriend", revoke_friendship_path(user_id: params[:id]),  method: :post, class: "btn btn-primary"
+    - else
+      = form_for @user.inverse_friendships.build, url: friendships_path do |f|
+        = f.hidden_field :friend_id
+        = f.submit "Befriend", class: "btn btn-primary"
 
-  -else
-    = form_for @user.inverse_friendships.build, url: friendships_path do |f|
-      = f.hidden_field :friend_id
-      = f.submit "Befriend", class: "btn btn-primary"
+  / - if friendship(params[:id])
+  /   = link_to "Unfriend", revoke_friendship_path(user_id: params[:id]),  method: :post, class: "btn btn-primary"
+
+  / -else
+  /   = form_for @user.inverse_friendships.build, url: friendships_path do |f|
+  /     = f.hidden_field :friend_id
+  /     = f.submit "Befriend", class: "btn btn-primary"

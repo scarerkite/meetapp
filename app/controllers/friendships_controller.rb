@@ -26,15 +26,23 @@ class FriendshipsController < ApplicationController
   # POST /friendships/99/revoke?user_id=1
   # POST /friendships/99/revoke?friend_id=2
   def revoke
-    friendship = if params[:user_id]
-      Friendship.where(id: params[:id], user_id: params[:user_id], friend_id: current_user.id)
-    elsif params[:friend_id]
-      current_user.friendships.where(id: params[:id], friend_id: params[:friend_id])
+    friendship = Friendship.where(user_id: params[:id], friend_id: current_user.id)
+    if friendship.empty?
+       friendship = current_user.friendships.where(friend_id: params[:id])
     end
-    if friendship
-      friendship.approved = false
-      friendship.save!
-    end
+    # if friendship.empty?
+    #   false
+    # end
+    # friendship = if params[:user_id]
+    #   Friendship.where(id: params[:id], user_id: params[:user_id], friend_id: current_user.id)
+    # elsif params[:friend_id]
+    #   current_user.friendships.where(id: params[:id], friend_id: params[:friend_id])
+    # end
+    # if friendship
+    binding.pry
+    friendship.approved = false
+    friendship.save!
+    # end
     redirect_to :profile
   end
 
