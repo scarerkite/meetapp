@@ -28,7 +28,7 @@ class Event < ActiveRecord::Base
   validates :date, presence: true
   validates :time, presence: true
 
-  # after_create :set_lat_lng
+  after_create :set_lat_lng
 
   # before_save :postcode_valid?
 
