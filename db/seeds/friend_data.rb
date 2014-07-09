@@ -131,5 +131,45 @@ Friendship.create!(
 
 Friendship.create!(
   user_id: 7, 
-  friend_id: 6,
+  friend_id: 6
 )
+
+Friendship.create!(
+  user_id: 7, 
+  friend_id: 5,
+  approved: true
+)
+
+Friendship.create!(
+  user_id: 2, 
+  friend_id: 5
+)
+
+Friendship.create!(
+  user_id: 3, 
+  friend_id: 5
+)
+
+Friendship.create!(
+  user_id: 4, 
+  friend_id: 5
+)
+
+Friendship.create!(
+  user_id: 6, 
+  friend_id: 10,
+  approved: true
+)
+
+Friendship.create!(
+  user_id: 6, 
+  friend_id: 7,
+  approved: true
+)
+
+Friendship.create!(
+  user_id: 6, 
+  friend_id: 8,
+  approved: true
+)
+

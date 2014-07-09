@@ -20,6 +20,7 @@ Invitation.create!(
 Invitation.create!(
   event_id: 1,
   invitee_id: 5,
+  accepted: true
 )
 
 Invitation.create!(
@@ -81,12 +82,12 @@ Invitation.create!(
 
 Invitation.create!(
   event_id: 8,
-  invitee_id: 4,
+  invitee_id: 1,
 )
 
 Invitation.create!(
   event_id: 8,
-  invitee_id: 6,
+  invitee_id: 5,
 )
 
 Invitation.create!(
@@ -100,7 +101,32 @@ Invitation.create!(
 )
 
 Invitation.create!(
-  event_id: 8,
+  event_id: 10,
   invitee_id: 9,
+)
+
+Invitation.create!(
+  event_id: 10,
+  invitee_id: 4,
+)
+
+Invitation.create!(
+  event_id: 10,
+  invitee_id: 6,
+)
+
+Invitation.create!(
+  event_id: 10,
+  invitee_id: 7,
+)
+
+Invitation.create!(
+  event_id: 10,
+  invitee_id: 8,
+)
+
+Invitation.create!(
+  event_id: 10,
+  invitee_id: 5,
 )
 

@@ -8,14 +8,12 @@
     = @event.title
   .col-md-6
     #map_canvas
+    
+    - if @event.host == current_user
+      = link_to 'Edit', edit_event_path(@event), class: "btn btn-primary"
 
-    = link_to 'Edit', edit_event_path(@event), class: "btn btn-primary"
-
-
-
-
-    #current-position.btn.btn-primary
-      Update location
+      #current-position.btn.btn-primary
+        Update location
 
     / = button_to "Accept", invitations_path, method: :post
     / = button_to "Decline", invitations_path, method: :post

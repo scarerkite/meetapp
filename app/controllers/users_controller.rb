@@ -11,6 +11,8 @@ class UsersController < Devise::RegistrationsController
   # GET /users/1
   def show
     @friend_status = if current_user.pending_friend_ids.include?(@user.id)
+      :pending
+    elsif @user.pending_friend_ids.include?(current_user.id)
       :pending 
     elsif current_user.friend_ids.include?(@user.id)
       :friend

@@ -34,7 +34,7 @@ Event.create!(
   postcode: "EC1R 5DU",
   date: "21-07-2014",
   time: "2000-01-01 19:00:00 UTC",
-  host_id: 5,
+  host_id: 7,
   latitude: 51.5221910,
   longitude: -0.1109010
 )
@@ -94,7 +94,7 @@ Event.create!(
   postcode: "OX4 4EL",
   date: "14-10-2014",
   time: "2000-01-01 18:30:00 UTC",
-  host_id: 5,
+  host_id: 6,
   latitude: 51.7315100,
   longitude: -1.2416050
 )
@@ -130,7 +130,7 @@ Event.create!(
   postcode: "OX1 2DF",
   date: "15-08-2014",
   time: "2000-01-01 18:00:00 UTC",
-  host_id: 10,
+  host_id: 5,
   latitude: 51.7545660,
   longitude: -1.2611740
 )

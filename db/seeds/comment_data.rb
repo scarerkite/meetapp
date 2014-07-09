@@ -35,3 +35,22 @@ Comment.create!(
   user_id: 5, 
   body: "No, we're upstairs."
 )
+
+Comment.create!(
+  event_id: 8, 
+  user_id: 4, 
+  body: "Just got here - am I the first?"
+)
+
+Comment.create!(
+  event_id: 8, 
+  user_id: 5, 
+  body: "No, we're out the back."
+)
+
+Comment.create!(
+  event_id: 8, 
+  user_id: 8, 
+  body: "Running 20 mins late - nightmare traffic!"
+)
+
