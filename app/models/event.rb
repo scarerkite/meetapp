@@ -11,7 +11,7 @@ class Event < ActiveRecord::Base
   #     obj.country = geo.country_code
   #   end
   # end
-  # before_update :reverse_geocode, if: :longitude_changed?
+  before_update :set_address, if: :longitude_changed?
 
   belongs_to :host, class_name: "User", foreign_key: "host_id"
   has_many :comments
@@ -34,8 +34,8 @@ class Event < ActiveRecord::Base
 
   after_create :set_lat_lng
 
-  # before_save :update_address
-  # before_update :update_address
+  before_save :update_address
+  before_update :update_address
 
   accepts_nested_attributes_for :invitations
 
@@ -48,6 +48,13 @@ class Event < ActiveRecord::Base
 
   def update_address
     set_lat_lng if self.address_changed? || self.postcode_changed?
+  end
+
+  def set_address
+    latlng = [self.latitude, self.longitude].join(",")
+    self.address = get_address(latlng)
+    self.postcode = "See above"
+    self.save
   end
 
 

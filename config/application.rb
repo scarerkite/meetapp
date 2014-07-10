@@ -8,7 +8,7 @@ Bundler.require(*Rails.groups)
 
 module Meetapp
   class Application < Rails::Application
-    config.assets.initialize_on_precompile = false
+    #config.assets.initialize_on_precompile = false
   end
 end
 

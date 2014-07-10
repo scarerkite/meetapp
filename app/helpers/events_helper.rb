@@ -18,12 +18,9 @@ module EventsHelper
   end
 
 
-  def get_address
-    reverse_geocoded_by :latitude, :longitude do |obj, results|
-      if geo = results.first
-        obj.address  = geo.address
-        obj.postcode = geo.postal_code
-      end
-    end
+  def get_address(latlng)
+    data = Geocoder.search(latlng).first.data
+    return data["formatted_address"]
+
   end
 end
