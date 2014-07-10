@@ -34,8 +34,8 @@ class Event < ActiveRecord::Base
 
   after_create :set_lat_lng
 
-  # before_save :update_address
-  # before_update :update_address
+  before_save :update_address
+  before_update :update_address
 
   accepts_nested_attributes_for :invitations
 
