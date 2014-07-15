@@ -12,10 +12,10 @@ module EventsHelper
 
   # Google
 
-  def get_coords(address)
-    data = Geocoder.search(address).first.data
-    return data["geometry"]["location"]
-  end
+  # def get_coords(address)
+  #   data = Geocoder.search(address).first.data
+  #   return data["geometry"]["location"]
+  # end
 
 
   def get_address(latlng)

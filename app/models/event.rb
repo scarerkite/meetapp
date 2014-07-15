@@ -2,6 +2,8 @@ class Event < ActiveRecord::Base
   include EventsHelper
   #include ActiveModel::Validations
   #require "uk_postcode"
+  geocoded_by :full_address
+  after_validation :geocode
 
   # reverse_geocoded_by :latitude, :longitude do |obj, results|
   #   if geo = results.first
@@ -11,7 +13,7 @@ class Event < ActiveRecord::Base
   #     obj.country = geo.country_code
   #   end
   # end
-  before_update :set_address, if: :longitude_changed?
+  #before_update :set_address, if: :longitude_changed?
 
   belongs_to :host, class_name: "User", foreign_key: "host_id"
   has_many :comments
@@ -32,10 +34,10 @@ class Event < ActiveRecord::Base
   #   postcode.postcode_valid?
   # end
 
-  after_create :set_lat_lng
+  # after_create :set_lat_lng
 
-  before_save :update_address
-  before_update :update_address
+  # before_save :update_address
+  # before_update :update_address
 
   accepts_nested_attributes_for :invitations
 
@@ -45,25 +47,29 @@ class Event < ActiveRecord::Base
   #   errors.add(:base, 'Postcode must be valid') unless pc.valid?
   # end
 
-
-  def update_address
-    set_lat_lng if self.address_changed? || self.postcode_changed?
-  end
-
-  def set_address
-    latlng = [self.latitude, self.longitude].join(",")
-    self.address = get_address(latlng)
-    self.postcode = "See above"
-    self.save
+  def full_address
+    [self.address, self.postcode].join(", ")
   end
 
 
-  def set_lat_lng
-    full_address = [self.address, self.postcode].join(", ")
-    self.latitude = get_coords(full_address)["lat"]
-    self.longitude = get_coords(full_address)["lng"]
-    self.save
-  end
+  # def update_address
+  #   set_lat_lng if self.address_changed? || self.postcode_changed?
+  # end
+
+  # def set_address
+  #   latlng = [self.latitude, self.longitude].join(",")
+  #   self.address = get_address(latlng)
+  #   self.postcode = "See above"
+  #   self.save
+  # end
+
+
+  # def set_lat_lng
+  #   address = full_address
+  #   self.latitude = get_coords(address)["lat"]
+  #   self.longitude = get_coords(address)["lng"]
+  #   self.save
+  # end
 
   # Bing
   # def set_lat_lng
