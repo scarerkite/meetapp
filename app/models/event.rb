@@ -9,6 +9,17 @@ class Event < ActiveRecord::Base
     [self.address, self.postcode].join(", ")
   end
 
+  reverse_geocoded_by :latitude, :longitude 
+
+  reverse_geocoded_by :latitude, :longitude do |obj,results|
+    if geo = results.first
+      obj.address     = geo.address
+      obj.postcode = geo.postal_code
+      binding.pry
+    end
+  end
+  after_validation :reverse_geocode,
+    :if => lambda{ |obj| obj.longitude_changed? }
 
   belongs_to :host, class_name: "User", foreign_key: "host_id"
   has_many :comments
