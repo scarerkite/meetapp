@@ -3,17 +3,12 @@ class Event < ActiveRecord::Base
   #include ActiveModel::Validations
   #require "uk_postcode"
   geocoded_by :full_address
-  after_validation :geocode
+  before_create :geocode
 
-  # reverse_geocoded_by :latitude, :longitude do |obj, results|
-  #   if geo = results.first
-  #     # populate your model
-  #     obj.city    = geo.city
-  #     obj.zipcode = geo.postal_code
-  #     obj.country = geo.country_code
-  #   end
-  # end
-  #before_update :set_address, if: :longitude_changed?
+  def full_address
+    [self.address, self.postcode].join(", ")
+  end
+
 
   belongs_to :host, class_name: "User", foreign_key: "host_id"
   has_many :comments
@@ -30,53 +25,10 @@ class Event < ActiveRecord::Base
   validates :description, length: { :maximum => 250 }, allow_blank: true
   validates :date, presence: true
   validates :time, presence: true
-  # validate do |:postcode|
-  #   postcode.postcode_valid?
-  # end
-
-  # after_create :set_lat_lng
-
-  # before_save :update_address
-  # before_update :update_address
 
   accepts_nested_attributes_for :invitations
 
 
-  # def postcode_valid?
-  #   pc = UKPostcode.new(self.postcode)
-  #   errors.add(:base, 'Postcode must be valid') unless pc.valid?
-  # end
-
-  def full_address
-    [self.address, self.postcode].join(", ")
-  end
-
-
-  # def update_address
-  #   set_lat_lng if self.address_changed? || self.postcode_changed?
-  # end
-
-  # def set_address
-  #   latlng = [self.latitude, self.longitude].join(",")
-  #   self.address = get_address(latlng)
-  #   self.postcode = "See above"
-  #   self.save
-  # end
-
-
-  # def set_lat_lng
-  #   address = full_address
-  #   self.latitude = get_coords(address)["lat"]
-  #   self.longitude = get_coords(address)["lng"]
-  #   self.save
-  # end
-
-  # Bing
-  # def set_lat_lng
-  #   full_address = [self.address, self.postcode].join(", ")
-  #   self.latitude = get_coords(full_address).first
-  #   self.longitude = get_coords(full_address).last
-  #   self.save
-  # end
+  
 
 end
