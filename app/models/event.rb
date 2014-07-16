@@ -4,6 +4,8 @@ class Event < ActiveRecord::Base
   #require "uk_postcode"
   geocoded_by :full_address
   before_create :geocode
+  after_validation :geocode,
+    :if => lambda{ |obj| obj.address_changed? }
 
   def full_address
     [self.address, self.postcode].join(", ")
