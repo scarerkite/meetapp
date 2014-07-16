@@ -14,6 +14,7 @@ function initialize() {
    addMarker(map, latLng);
    $("#current-position").on("click", function(){
     if(navigator.geolocation){
+      $("#address").text("Finding new address...");
       navigator.geolocation.getCurrentPosition(updateLocation, handleLocationError);
       navigator.geolocation.watchPosition(updateLocation, handleLocationError);
     }else{
@@ -54,7 +55,13 @@ function addMarker(map, latLng) {
       },
       dataType: 'json',
       success: function(data){
+        new_address = data.address;
+        if (data.postcode != null){
+          new_address += ", " + data.postcode;
+        }
+          
         console.log("event location updated", data)
+        $("#address").text(new_address);
       }
     })
   }

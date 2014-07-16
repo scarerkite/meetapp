@@ -38,22 +38,28 @@
     %h3
       = @event.description
     %h4
-      = "Hosted by: #{@event.host.name}"
+      Hosted by: 
+      %br
+      = image_tag(@event.host.image.profile.url, class: "small-avatar")
+      #{@event.host.name}
+      
     %h4
       = @event.time.strftime("%H:%M")
     %h4 
       = @event.date.strftime("%d/%m/%y")
     %p
       %h4
-        = [@event.address, @event.postcode].join(", ")
+        #address
+          = [@event.address, @event.postcode].join(", ")
 
     %h3 Who?
     .invitee_list
       - @event.invitations.each do |invitation|
-        %p
-          = link_to profile_path do
-            = image_tag(invitation.invitee.image.profile.url, class: "small-avatar")
-          = link_to invitation.invitee.name, "/users/#{invitation.invitee.id}"
+        - if invitation.accepted == true
+          %p
+            = link_to "/users/#{invitation.invitee.id}" do
+              = image_tag(invitation.invitee.image.profile.url, class: "small-avatar")
+            = link_to invitation.invitee.name, "/users/#{invitation.invitee.id}"
 
 
 

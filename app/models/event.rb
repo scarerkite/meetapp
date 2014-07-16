@@ -2,6 +2,15 @@ class Event < ActiveRecord::Base
   include EventsHelper
   #include ActiveModel::Validations
   #require "uk_postcode"
+
+  validate :postcode_valid?
+
+  def postcode_valid?
+    pc = UKPostcode.new(self.postcode)
+    errors.add(:base, 'Postcode must be valid') unless pc.valid?
+  end
+
+
   geocoded_by :full_address
   before_create :geocode
   after_validation :geocode,

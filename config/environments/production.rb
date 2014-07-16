@@ -89,8 +89,8 @@ Meetapp::Application.configure do
     config.action_mailer.smtp_settings = {
       :address   => "smtp.mandrillapp.com",
       :port      => 587,
-      :user_name => "MANDRILL_USERNAME",
-      :password  => "MANDRILL_API_KEY"
+      :user_name => ENV["MANDRILL_USERNAME"],
+      :password  => ENV["MANDRILL_API_KEY"]
     }
 
 
