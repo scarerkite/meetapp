@@ -13,9 +13,8 @@ class Event < ActiveRecord::Base
 
   reverse_geocoded_by :latitude, :longitude do |obj,results|
     if geo = results.first
-      obj.address     = geo.address
+      obj.address  = [geo.street_number, geo.route, geo.city].join(", ")
       obj.postcode = geo.postal_code
-      binding.pry
     end
   end
   after_validation :reverse_geocode,
