@@ -8,7 +8,7 @@ Invitation.create!(
 
 Invitation.create!(
   event_id: 1,
-  invitee_id: 6,
+  invitee_id: 1,
   accepted: true
 )
 
@@ -31,7 +31,8 @@ Invitation.create!(
 
 Invitation.create!(
   event_id: 1,
-  invitee_id: 7
+  invitee_id: 7,
+  accepted: true
 )
 
 Invitation.create!(
@@ -53,7 +54,7 @@ Invitation.create!(
 
 Invitation.create!(
   event_id: 2,
-  invitee_id: 6
+  invitee_id: 1
 )
 
 Invitation.create!(

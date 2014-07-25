@@ -94,9 +94,9 @@ jack = User.new(
   password: "password"
 )
 
-#[alice, bob, charlotte, dan, ed, fran, gary, hilda, ida, jack].each(&:skip_confirmation!).each(&:save!)
+[alice, bob, charlotte, dan, ed, fran, gary, hilda, ida, jack].each(&:skip_confirmation!).each(&:save!)
 
-[alice, bob, charlotte, dan, ed, fran, gary, hilda, ida, jack].each(&:save!)
+#[alice, bob, charlotte, dan, ed, fran, gary, hilda, ida, jack].each(&:save!)
 
 
 

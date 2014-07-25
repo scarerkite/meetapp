@@ -9,7 +9,7 @@ Event.create!(
   postcode: "EC1R 0EG",
   date: "21-08-2014",
   time: "2000-01-01 21:00:00 UTC",
-  host_id: 1,
+  host_id: 6,
   latitude: 51.5232500,
   longitude: -0.1052060
 
@@ -22,7 +22,7 @@ Event.create!(
   postcode: "OX2 6EB",
   date: "14-10-2014",
   time: "2000-01-01 20:00:00 UTC",
-  host_id: 5,
+  host_id: 6,
   latitude: 51.7612010,
   longitude: -1.2674940
 )
@@ -34,7 +34,7 @@ Event.create!(
   postcode: "EC1R 5DU",
   date: "21-07-2014",
   time: "2000-01-01 19:00:00 UTC",
-  host_id: 7,
+  host_id: 6,
   latitude: 51.5221910,
   longitude: -0.1109010
 )
@@ -46,7 +46,7 @@ Event.create!(
   postcode: "SE1 9RY",
   date: "24-07-2014",
   time: "2000-01-01 19:00:00 UTC",
-  host_id: 4,
+  host_id: 6,
   latitude: 51.5044490,
   longitude: -0.0866010
 )
@@ -58,7 +58,7 @@ Event.create!(
   postcode: "EC1R 3DJ",
   date: "15-07-2014",
   time: "2000-01-01 18:00:00 UTC",
-  host_id: 1,
+  host_id: 6,
   latitude: 51.5230360,
   longitude: -0.1092870
 )
@@ -70,7 +70,7 @@ Event.create!(
   postcode: "EC1R 5ET",
   date: "24-08-2014",
   time: "2000-01-01 19:00:00 UTC",
-  host_id: 7,
+  host_id: 6,
   latitude: 51.5225550,
   longitude: -0.1104130
 )
@@ -82,7 +82,7 @@ Event.create!(
   postcode: "EC1R 0EG",
   date: "21-08-2014",
   time: "2000-01-01 19:00:00 UTC",
-  host_id: 1,
+  host_id: 6,
   latitude: 51.5232500,
   longitude: -0.1052060
 )
@@ -118,7 +118,7 @@ Event.create!(
   postcode: "OX4 1XG",
   date: "15-08-2014",
   time: "2000-01-01 18:00:00 UTC",
-  host_id: 7,
+  host_id: 2,
   latitude: 51.7457080,
   longitude: -1.2307650
 )
@@ -130,7 +130,7 @@ Event.create!(
   postcode: "OX1 2DF",
   date: "15-08-2014",
   time: "2000-01-01 18:00:00 UTC",
-  host_id: 5,
+  host_id: 1,
   latitude: 51.7545660,
   longitude: -1.2611740
 )
