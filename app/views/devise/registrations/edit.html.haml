@@ -56,10 +56,10 @@
         = f.password_field :current_password, autocomplete: "off", class: "form-control", placeholder: "Current password"
     %div= f.submit "Update", class: "btn btn-primary"
 
-  %p
-    = link_to "Link this account with your Google account", user_omniauth_authorize_path(:google_oauth2)
-  %p
-    = link_to "Link this account with your Facebook account", user_omniauth_authorize_path(:facebook)
+  / %p
+  /   = link_to "Link this account with your Google account", user_omniauth_authorize_path(:google_oauth2)
+  / %p
+  /   = link_to "Link this account with your Facebook account", user_omniauth_authorize_path(:facebook)
 
   %h3 Cancel my account
   %p
