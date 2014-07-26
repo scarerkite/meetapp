@@ -68,4 +68,15 @@ span.red {
   color: #CB0E08;
 }
 
+.greyed img {
+  opacity: 0.4;
+  filter: alpha(opacity=40); /* msie */
+  background-color: #000;
+}
 
+.event-profiles {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
