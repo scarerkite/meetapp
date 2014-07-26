@@ -5,15 +5,16 @@
     .col-md-12
       - if @hosted_events.any?
         - @hosted_events.order('date ASC').each do |event|
-          .panel.panel-default
-            .panel-heading
-              %h4  
-                = link_to event.title, event
-            .panel-body
-              %p
-                = event.address
-              %p
-                = event.date.strftime("%d/%m/%y")
+          - unless Date.today > event.date + 2.days
+            .panel.panel-default
+              .panel-heading
+                %h4  
+                  = link_to event.title, event
+              .panel-body
+                %p
+                  = event.address
+                %p
+                  = event.date.strftime("%d/%m/%y")
       - else
         .list_headings
           %h4
@@ -32,15 +33,17 @@
         -if @invited_events.any?
           - @invited_events.each do |event|
             - unless current_user.said_yes? event
-              .panel.panel-default
-                .panel-heading
-                  %h4 
-                    = link_to event.title, event
-                .panel-body
-                  %p
-                    = event.address
-                  %p
-                    = event.date.strftime("%d/%m/%y")
+              - unless Date.today > event.date + 2.days
+                .panel.panel-default
+                  .panel-heading
+                    %h4 
+                      = link_to event.title, event
+
+                  .panel-body
+                    %p
+                      = event.address
+                    %p
+                      = event.date.strftime("%d/%m/%y")
         - else
           .list_headings
             %h4

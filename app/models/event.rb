@@ -47,6 +47,13 @@ class Event < ActiveRecord::Base
   validates :date, presence: true
   validates :time, presence: true
 
+  validate :date_cannot_be_in_the_past,
+
+  def date_cannot_be_in_the_past
+    errors.add(:date, "can't be in the past") if
+      !date.blank? and date < Date.today
+  end
+
   accepts_nested_attributes_for :invitations
 
 
