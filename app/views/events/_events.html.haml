@@ -17,6 +17,8 @@
                   = event.address
                 %p
                   = event.date.strftime("%d/%m/%y")
+                - if event.cancelled == true
+                  = link_to 'Delete', event, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-primary"
       - else
         .list_headings
           %h4
