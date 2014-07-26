@@ -9,6 +9,9 @@ Meetapp::Application.routes.draw do
         post :decline_invitation
       end
     end
+    member do
+      post :cancel
+    end
   end
 
 

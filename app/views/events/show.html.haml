@@ -6,6 +6,8 @@
 .col-md-12
   %h2
     = @event.title
+    - if @event.cancelled == true
+      %span.red *CANCELLED*
   .col-md-6
     #map_canvas
     
@@ -14,6 +16,8 @@
 
       #current-position.btn.btn-primary
         Update location
+
+      = link_to 'Cancel Event', cancel_event_path(@event), :method => :post, :data => { :confirm => 'Are you sure?' }, class: "btn btn-primary"
 
     / = button_to "Accept", invitations_path, method: :post
     / = button_to "Decline", invitations_path, method: :post

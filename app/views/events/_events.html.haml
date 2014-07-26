@@ -10,6 +10,8 @@
               .panel-heading
                 %h4  
                   = link_to event.title, event
+                  - if event.cancelled == true
+                    %span.red *CANCELLED*
               .panel-body
                 %p
                   = event.address
@@ -38,6 +40,8 @@
                   .panel-heading
                     %h4 
                       = link_to event.title, event
+                      - if event.cancelled == true
+                        %span.red *CANCELLED*
 
                   .panel-body
                     %p

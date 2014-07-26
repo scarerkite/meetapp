@@ -10,7 +10,7 @@ class Ability
       can :destroy, Comment do |comment|  
         comment.try(:user) == user
       end  
-      can [:update, :destroy], Event do |event|  
+      can [:update, :destroy, :cancel], Event do |event|  
         event.try(:host) == user 
       end
       can :read, Event do |event|
