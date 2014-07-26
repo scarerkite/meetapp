@@ -28,7 +28,7 @@ class Event < ActiveRecord::Base
       obj.postcode = geo.postal_code
     end
   end
-  after_validation :reverse_geocode,
+  before_validation :reverse_geocode,
     :if => lambda{ |obj| obj.longitude_changed? }
 
   belongs_to :host, class_name: "User", foreign_key: "host_id"
