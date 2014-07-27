@@ -5,7 +5,17 @@ class UsersController < Devise::RegistrationsController
 
   # GET /users
   def index
-    @users = User.all
+    @q = User.search params[:q]
+    @users = @q.result(distinct: true)
+  end
+
+  def search
+    index
+    render :index
+  end
+
+  def friends
+    @friends = current_user.friends
   end
 
   # GET /users/1

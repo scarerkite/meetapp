@@ -16,6 +16,12 @@ class ApplicationController < ActionController::Base
     profile_path
   end
 
+  before_filter :set_search
+
+  def set_search
+    @q = User.search(params[:q])
+  end
+
   # before_filter :configure_permitted_parameters, if: :devise_controller?
 
   # private

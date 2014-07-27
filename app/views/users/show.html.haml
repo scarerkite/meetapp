@@ -2,6 +2,9 @@
   %h1 
     = @user.name
 
+  %h3
+    = @user.username
+
   %p
     - if @user.image.profile.url
       = image_tag @user.image.profile.url, :class => "userimage"

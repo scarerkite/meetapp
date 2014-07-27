@@ -1,0 +1,8 @@
+.col-md-12
+  %h2 My friends
+  - @friends.each do |friend|
+    .friends
+      %h3 
+        = link_to friend.name, "/users/#{friend.id}"
+      = link_to "/users/#{friend.id}" do
+        = image_tag friend.image.profile.url, :class => "userimage"

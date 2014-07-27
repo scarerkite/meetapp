@@ -35,12 +35,18 @@
                     %li
                       = link_to 'Edit profile', edit_user_registration_path
                     %li
-                      = link_to 'Find Friends', users_path
+                      = link_to 'Friends', friends_path
                     %li
                       = link_to 'New Event', new_event_path
                     %li.divider
                     %li
                       = link_to 'Sign out', destroy_user_session_path, method: :delete
+              %ul.nav.navbar-nav.navbar-left{role: "search"}
+                .form-group
+                  .form-inline
+                    = search_form_for @q, url: search_path, html: { method: :post } do |f|
+                      = f.text_field :username_start, class: "form-control", placeholder: "Search users"
+                      = f.submit 'Search', class: "btn btn-primary nav-button"
                   
 
             - else

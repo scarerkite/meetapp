@@ -40,7 +40,7 @@ gem 'carrierwave'
 
 gem 'rmagick'
 
-gem 'ransack'
+gem 'ransack', github: 'activerecord-hackery/ransack', branch: 'rails-4'
 
 gem 'haml-rails'
 
@@ -71,6 +71,8 @@ gem 'autoprefixer-rails'
 gem 'uk_postcode'
 
 gem 'acts_as_friendable', github: "rhannequin/acts_as_friendable"
+
+
 
 group :development, :test do
   gem 'pry-rails'
