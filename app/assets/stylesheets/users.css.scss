@@ -26,24 +26,31 @@
   margin-top: 3px;
 }
 
-.friends {
-  width: 30%;
-  display: inline;
+.user {
+  width: 220px; 
   margin-top: 10px;
   margin-bottom: 5px;
+  display: inline;
+  float: left;
+  text-align: center;
+  
 
 }
 
-.friends h3 {
-  display: block;
+.user h3 {
+  display: inline-block;
+}
 
+.user img {
+  display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .navbar-left {
   margin-top: 10px;
 }
 
-// .nav-button {
-//   float: left;
-//   display: inline;
-// }
+h2 {
+  text-align: center;
+}
