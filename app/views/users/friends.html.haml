@@ -6,3 +6,4 @@
         = link_to friend.name, "/users/#{friend.id}"
       = link_to "/users/#{friend.id}" do
         = image_tag friend.image.profile.url, :class => "userimage"
+= will_paginate @friends, class: "digg_pagination"

@@ -23,6 +23,7 @@
         .list_headings
           %h4
             You're not currently hosting any events
+      = will_paginate @hosted_events, class: "digg_pagination"
 
   
 
@@ -53,4 +54,9 @@
         - else
           .list_headings
             %h4
-              You're not currently going to any events.
+              You're not currently going to any events
+        = will_paginate @invited_events, class: "digg_pagination"      
+
+        
+
+

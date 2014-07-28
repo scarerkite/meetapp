@@ -1,4 +1,5 @@
 class UsersController < Devise::RegistrationsController
+  require 'will_paginate/array'
   
   before_action :authenticate_user!, only: [:invitations, :profile]
   before_action :set_user, only: [:show]
@@ -15,7 +16,7 @@ class UsersController < Devise::RegistrationsController
   end
 
   def friends
-    @friends = current_user.friends
+    @friends = current_user.friends.paginate(:page => params[:page], :per_page => 20)
   end
 
   # GET /users/1
@@ -36,8 +37,8 @@ class UsersController < Devise::RegistrationsController
   end
 
   def profile
-    @hosted_events = current_user.hosted_events
-    @invited_events = current_user.events.order('date ASC')
+    @hosted_events = current_user.hosted_events.paginate(:page => params[:page], :per_page => 4)
+    @invited_events = current_user.events.order('date ASC').paginate(:page => params[:page], :per_page => 4)
   end
 
   private
