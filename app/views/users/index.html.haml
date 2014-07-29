@@ -2,10 +2,9 @@
   %h2 People
   - @users.each do |user|
     - unless user == current_user
-      - unless current_user.friends.include?(user)
-        .user
-          %h3 
-            = link_to user.username, "/users/#{user.id}"
-          = link_to "/users/#{user.id}" do
-            = image_tag user.image.profile.url, :class => "userimage"
+      .user
+        %h3 
+          = link_to user.username, "/users/#{user.id}"
+        = link_to "/users/#{user.id}" do
+          = image_tag user.image.profile.url, :class => "userimage"
 
