@@ -6,7 +6,7 @@ This was the 3rd and final project of the GA Web Development Immersive course. I
 
 ### Description
 
-For my final project, I built an app that allows users to create events so that everyone attending can access useful information in one place. You can update the address/map by finding your current location, and post updates for everyone to see. It was built in Rails 4 and uses the Bootstrap framework. The Google Maps API and geocoding are utilized and there’s an invitation system for both events and friends.
+MeetApp allows users to create events so that everyone attending can access useful information in one place. You can update the address/map by finding your current location, and post updates for everyone to see. It was built in Rails 4 and uses the Bootstrap framework. The Google Maps API and geocoding are utilized and there’s an invitation system for both events and friends.
 
 ****
 
