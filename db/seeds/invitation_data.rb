@@ -119,7 +119,8 @@ Invitation.create!(
 
 Invitation.create!(
   event_id: 10,
-  invitee_id: 6
+  invitee_id: 6,
+  accepted: true
 )
 
 Invitation.create!(
@@ -137,3 +138,139 @@ Invitation.create!(
   invitee_id: 5
 )
 
+Invitation.create!(
+  event_id: 2,
+  invitee_id: 2,
+  accepted: true
+)
+
+Invitation.create!(
+  event_id: 2,
+  invitee_id: 1,
+  accepted: true
+)
+
+Invitation.create!(
+  event_id: 2,
+  invitee_id: 3,
+  accepted: true
+)
+
+Invitation.create!(
+  event_id: 2,
+  invitee_id: 4
+)
+
+Invitation.create!(
+  event_id: 3,
+  invitee_id: 2,
+  accepted: true
+)
+
+Invitation.create!(
+  event_id: 3,
+  invitee_id: 1,
+  accepted: true
+)
+
+Invitation.create!(
+  event_id: 3,
+  invitee_id: 3,
+  accepted: true
+)
+
+Invitation.create!(
+  event_id: 3,
+  invitee_id: 4
+)
+
+Invitation.create!(
+  event_id: 4,
+  invitee_id: 2,
+  accepted: true
+)
+
+Invitation.create!(
+  event_id: 4,
+  invitee_id: 1,
+  accepted: true
+)
+
+Invitation.create!(
+  event_id: 4,
+  invitee_id: 3,
+  accepted: true
+)
+
+Invitation.create!(
+  event_id: 4,
+  invitee_id: 4
+)
+Invitation.create!(
+  event_id: 5,
+  invitee_id: 2,
+  accepted: true
+)
+
+Invitation.create!(
+  event_id: 5,
+  invitee_id: 1,
+  accepted: true
+)
+
+Invitation.create!(
+  event_id: 5,
+  invitee_id: 3,
+  accepted: true
+)
+
+Invitation.create!(
+  event_id: 5,
+  invitee_id: 4
+)
+
+Invitation.create!(
+  event_id: 6,
+  invitee_id: 2,
+  accepted: true
+)
+
+Invitation.create!(
+  event_id: 6,
+  invitee_id: 1,
+  accepted: true
+)
+
+Invitation.create!(
+  event_id: 6,
+  invitee_id: 3,
+  accepted: true
+)
+
+Invitation.create!(
+  event_id: 6,
+  invitee_id: 4
+)
+
+Invitation.create!(
+  event_id: 7,
+  invitee_id: 2,
+  accepted: true
+)
+
+Invitation.create!(
+  event_id: 7,
+  invitee_id: 1,
+  accepted: true
+)
+
+Invitation.create!(
+  event_id: 7,
+  invitee_id: 3,
+  accepted: true
+)
+
+Invitation.create!(
+  event_id: 7,
+  invitee_id: 4
+)
